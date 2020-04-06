@@ -18,4 +18,4 @@ In addition to rails, you will need to have access to other gems:
 
 Afterwards, access ~/Social_Media_Website and enter "$ rails server"
 
-On a web browser, go to "localhost:3000". You will see the home page of the website. Navigate as you please.
+On a web browser, go to "http://localhost:3000". You will see the home page of the website. Navigate as you please.
