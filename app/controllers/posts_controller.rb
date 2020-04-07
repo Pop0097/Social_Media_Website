@@ -1,16 +1,18 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @posts = Post.order(created_at: :desc) #lists all posts in descending order
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
     #render plain: params[:post].inspect #tests to see if the post object is created
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
 
     if @post.save

@@ -1,7 +1,20 @@
 <header>
   <table>
     <tr>
-      <td> <%= link_to 'Create Post', new_post_path, id: "function_link" %> </td>
+      <td>
+        <%= link_to 'Create Post', new_post_path, id: "function_link" %>
+      </td>
+      <td>
+          <h1>Popper</h1>
+          <% if current_user.present? %>
+            Signed in as <%= current_user.email %>
+          <% end %>
+      </td>
+      <% if current_user.present? %>
+        <td>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </td>
+      <% end %>
     </tr>
   </table>
 </header>
@@ -22,9 +35,8 @@
     <% @posts.each do |post| %>
       <tr>
         <td>
-          <div id = "recents_display_title_links">
-            <%= link_to post.title, post_path(post) %>
-          </div>
+          <%= post.user.email %>:
+            <%= link_to post.title, post_path(post), id: "recents_display_title_links" %>
           <p id = "recents_display_body">
             <%= post.body %>
           </p>

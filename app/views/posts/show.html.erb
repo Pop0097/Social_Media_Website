@@ -1,21 +1,26 @@
+<p id = "notice"><%= notice %> </p>
+
+
 <header>
   <table id = "show_post_header">
     <tr>
       <td>
         <%= link_to 'Go back to feed', posts_path %>
       </td>
-      <td>
-        <%= link_to 'Edit post', edit_post_path, id: "function_link" %>
-      </td>
-      <td>
-        <%= link_to 'Delete post', post_path(@post), id: "function_link", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %><br>
-      </td>
+      <% if @post.user == current_user %>
+        <td>
+          <%= link_to 'Edit post', edit_post_path, id: "function_link" %>
+        </td>
+        <td>
+          <%= link_to 'Delete post', post_path(@post), id: "function_link", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %><br>
+        </td>
+      <% end %>
     </tr>
   </table>
 </header>
 
 <article>
-  <h3><%= @post.title %> </h3>
+  <h3><%= @post.user.email %> <%= @post.title %> </h3>
   <p><%= @post.created_at.strftime("%B %d, 20%y") %></p>
   <p> <%= @post.body %> </p>
   <table>
