@@ -1,0 +1,38 @@
+<header>
+  <table id = "show_post_header">
+    <tr>
+      <td>
+        <%= link_to 'Go back to feed', posts_path %>
+      </td>
+      <td>
+        <%= link_to 'Edit post', edit_post_path, id: "function_link" %>
+      </td>
+      <td>
+        <%= link_to 'Delete post', post_path(@post), id: "function_link", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %><br>
+      </td>
+    </tr>
+  </table>
+</header>
+
+<article>
+  <h3><%= @post.title %> </h3>
+  <p><%= @post.created_at.strftime("%B %d, 20%y") %></p>
+  <p> <%= @post.body %> </p>
+  <table>
+    <tr>
+      <td>
+        <% @post.comments.reverse_each do |comment| %>
+          <p>
+            <strong><%= comment.commenter %></strong><br>
+            <%= comment.created_at.strftime("%B %d, 20%y") %><br>
+            <%= comment.body %>
+          </p>
+          <%= link_to 'Delete', [comment.post, comment], method: :delete %>
+        <% end %>
+      </td>
+      <td>
+        <%= render 'comments/commentCreateForm' %>
+      </td>
+    </tr>
+  </table>
+</article>

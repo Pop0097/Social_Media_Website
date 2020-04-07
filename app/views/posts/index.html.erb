@@ -1,0 +1,35 @@
+<header>
+  <table>
+    <tr>
+      <td> <%= link_to 'Create Post', new_post_path, id: "function_link" %> </td>
+    </tr>
+  </table>
+</header>
+
+<!-- User will be able to access their profile and all here -->
+<aside id = "main_aside">
+  <p> COOL </p>
+</aside>
+
+<section id = "recents_title">
+  <h1> Recents </h1>
+</section>
+
+<article>
+  <table id = "recents_display">
+    <tr>
+    </tr>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <div id = "recents_display_title_links">
+            <%= link_to post.title, post_path(post) %>
+          </div>
+          <p id = "recents_display_body">
+            <%= post.body %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</article>

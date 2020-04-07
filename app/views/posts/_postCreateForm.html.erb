@@ -1,0 +1,31 @@
+<!-- This file is called to display the form that the user uses to make posts -->
+<%= form_with scope: :post, url: posts_path, local: true do |form| %>
+  <!-- notifies user of any errors if any -->
+  <% if @post.errors.any? %>
+    <div id = "post_error_explanaton">
+      <h2>
+        <%= pluralize(@post.errors.count, "error") %>
+        are present. Please fix them before sharing the post.
+      </h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- input for the post -->
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_field :body %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
