@@ -2,13 +2,9 @@
 <h4> Post a comment </h4>
 
 <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+    <%= comment.commenter = @person %>
   <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %> <br>
-    <%= form.text_field :body %>
+    <%= form.text_area :body, placeholder: 'Enter Commment' %>
   </p>
   <p>
     <%= form.submit %>

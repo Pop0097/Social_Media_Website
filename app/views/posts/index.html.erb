@@ -1,29 +1,4 @@
-<header>
-  <table>
-    <tr>
-      <td>
-        <%= link_to 'Create Post', new_post_path, id: "function_link" %>
-      </td>
-      <td>
-          <h1>Popper</h1>
-          <% if current_user.present? %>
-            Signed in as <%= current_user.email %>
-          <% end %>
-      </td>
-      <% if current_user.present? %>
-        <td>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        </td>
-      <% end %>
-    </tr>
-  </table>
-</header>
-
 <!-- User will be able to access their profile and all here -->
-<aside id = "main_aside">
-  <p> COOL </p>
-</aside>
-
 <section id = "recents_title">
   <h1> Recents </h1>
 </section>
@@ -35,7 +10,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td>
-          <%= post.user.email %>:
+          <%= post.user.username %>:
             <%= link_to post.title, post_path(post), id: "recents_display_title_links" %>
           <p id = "recents_display_body">
             <%= post.body %>

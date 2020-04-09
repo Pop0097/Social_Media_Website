@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Popper</title>
+    <title> Popper! </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,30 @@
   </head>
 
   <body>
+
+    <header>
+      <table>
+        <tr>
+          <td>
+            <% if current_user.present? %>
+              <%= link_to 'Profile', current_user %>
+            <% else %>
+              <%= link_to 'Sign Up!', new_user_registration_path %>
+            <% end %>
+          </td>
+          <td>
+              <h1><%= link_to 'Popper', root_path, id: "Main_Title"%></h1>
+          </td>
+            <td>
+          <% if current_user.present? %>
+            <%= link_to 'Create Post', new_post_path, id: "function_link" %>
+          <% else %>
+            <%= link_to 'Sign In!', new_user_session_path %>
+          <% end %>
+          </td>
+        </tr>
+      </table>
+    </header>
 
   <!--  <p class="notice"><%= notice %></p>  <p class="alert"><%= alert %></p> -->
 

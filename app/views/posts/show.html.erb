@@ -1,7 +1,7 @@
 <p id = "notice"><%= notice %> </p>
 
 
-<header>
+<nav>
   <table id = "show_post_header">
     <tr>
       <td>
@@ -17,10 +17,10 @@
       <% end %>
     </tr>
   </table>
-</header>
+</nav>
 
 <article>
-  <h3><%= @post.user.email %> <%= @post.title %> </h3>
+  <h3><%= @post.user.username %> <%= @post.title %> </h3>
   <p><%= @post.created_at.strftime("%B %d, 20%y") %></p>
   <p> <%= @post.body %> </p>
   <table>
