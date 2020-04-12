@@ -19,13 +19,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.telephone_field :phone_number, autocomplete: "phone number" %>
-  </div>
-
-  <div class="field">
     <%= f.label :birth_month %><br />
-    <%= f.select(:birth_month, options_for_select([['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']])) %>
+    <%= f.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
   </div>
 
   <div class="field">
@@ -35,7 +30,7 @@
 
   <div class="field">
     <%= f.label :sex %><br />
-    <%= f.select(:sex, options_for_select([['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']])) %>
+    <%= f.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
   </div>
 
   <div class="field">

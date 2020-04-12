@@ -1,4 +1,5 @@
-<!-- User will be able to access their profile and all here -->
+<!-- this is the main page of the website. All posts are displayed here -->
+
 <section id = "recents_title">
   <h1> Recents </h1>
 </section>
@@ -7,7 +8,7 @@
   <table id = "recents_display">
     <tr>
     </tr>
-    <% @posts.each do |post| %>
+    <% @posts.reverse_each do |post| %>
       <tr>
         <td>
           <%= post.user.username %>:

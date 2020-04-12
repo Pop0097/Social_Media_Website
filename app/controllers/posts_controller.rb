@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user! #User must be logged in before accessing view files in User class.
+  before_action :set_post, only: [:show, :edit, :update, :destroy] #sets @post before calling other methods
 
   def index
-    @posts = Post.order(created_at: :desc) #lists all posts in descending order
+    @posts = Post.all
   end
 
   def new
@@ -11,9 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    #render plain: params[:post].inspect #tests to see if the post object is created
     @post = current_user.posts.build(post_params)
-
 
     if @post.save
       redirect_to @post
@@ -23,16 +22,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-
     if @post.update(post_params)
       redirect_to @post
     else
@@ -41,13 +36,18 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-
-    redirect_to posts_path
+    if @post.destroy
+      redirect_to posts_path
+    end
   end
 
-  private def post_params
-    params.require(:post).permit(:title, :body)
-  end
+  private
+    def set_post
+      @post = Post.find(params[:id])
+    end
+
+    def post_params
+      #ensures that the correct values are being inputed and validates them based on the criteria in post.rb
+      params.require(:post).permit(:title, :body)
+    end
 end

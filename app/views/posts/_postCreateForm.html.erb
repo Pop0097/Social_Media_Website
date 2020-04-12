@@ -1,6 +1,6 @@
-<!-- This file is called to display the form that the user uses to make posts -->
+<!-- Form used to create a post -->
 <%= form_with scope: :post, url: posts_path, local: true do |form| %>
-  <!-- notifies user of any errors if any -->
+  <!-- notifies user of any errors in their input -->
   <% if @post.errors.any? %>
     <div id = "post_error_explanaton">
       <h2>
