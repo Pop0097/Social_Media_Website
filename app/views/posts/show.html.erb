@@ -2,7 +2,7 @@
   <table id = "show_post_header">
     <tr>
       <td>
-        <%= link_to 'Go back to feed', posts_path %>
+        <%= link_to 'Back', :back %>
       </td>
       <!-- To ensure only the owner of the post can edit or delete it, this if statement is used -->
       <% if @post.user == current_user %>
@@ -18,7 +18,7 @@
 </nav>
 
 <article>
-  <h3><%= @post.user.username %>: <%= @post.title %> </h3>
+  <h3><%= link_to avatar_for(@post.user, size: 40), @post.user %><%= @post.user.username %>: <%= @post.title %> </h3>
   <p><%= @post.created_at.strftime("%B %d, 20%y") %></p>
   <p> <%= @post.body %> </p>
   <table>
@@ -26,7 +26,7 @@
       <td>
         <% @post.comments.reverse_each do |comment| %>
           <p>
-            <strong><%= comment.commenter %></strong>: <%= comment.created_at.strftime("%B %d, 20%y") %><br> 
+            <strong><%= comment.commenter %></strong>: <%= comment.created_at.strftime("%B %d, 20%y") %><br>
             <%= comment.body %>
           </p>
           <% if (@post.user == current_user) or (comment.commenter == current_user.username) %>

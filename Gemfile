@@ -7,6 +7,9 @@ ruby '2.6.3'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 #use devise for user authentication
 gem 'devise', '~> 4.7.1'
+#use carrierwave for file uploads
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick', '4.10.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server

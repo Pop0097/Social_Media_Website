@@ -15,7 +15,7 @@
         <tr>
           <td>
             <% if current_user.present? %>
-              <%= link_to 'Profile', current_user %>
+              <%= link_to avatar_for(current_user, size: 35), current_user %>
             <% else %>
               <%= link_to 'Sign Up!', new_user_registration_path %>
             <% end %>

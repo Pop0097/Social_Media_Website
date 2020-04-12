@@ -1,14 +1,15 @@
 <aside>
   <!-- if statement added so other users cannot edit or delete other accounts -->
-  <%= link_to 'Go back to feed', posts_path %><br>
+  <%= link_to 'Back', :back %><br>
   <% if @user.id == current_user.id %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete %><br>
-    <%= link_to 'Edit Account', edit_user_path %><br>
+    <%= link_to 'Edit Account', edit_user_registration_path %><br>
     <%= link_to 'Delete Account', registration_path(current_user), id: "delete_link", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
   <% end %>
 </aside>
 
 <h2> <%= @user.username %> </h2>
+<%= avatar_for(@user) %>
 
 <!-- table displays information of the user -->
 <table id = "profile_table">

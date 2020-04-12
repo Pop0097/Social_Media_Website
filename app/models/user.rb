@@ -10,13 +10,15 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  #for profile picture
+  mount_uploader :avatar, AvatarUploader
+
   #validates User parameters
   validates :name, presence: true
   validates :username, presence: true, length: {maximum: 8}
   validates :birth_month, presence: true
   validates :birth_year, presence: true, numericality: {less_than_or_equal_to: 2006, greater_than: 1900}
   validates :sex, presence: true
-
 
   #Sets the value for :login
   def self.find_for_database_authentication warden_condition

@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
   protected def configure_permitted_parameters
     #extends the perameters list on the devise controllers
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :sex, :birth_year, :birth_month, :email, :password, :password_confirmation])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password, :password_confirmation])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :sex, :birth_year, :birth_month, :current_password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :sex, :birth_year, :birth_month, :email])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:login])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :sex, :birth_year, :birth_month, :avatar])
   end
 
 end
