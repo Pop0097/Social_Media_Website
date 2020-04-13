@@ -48,6 +48,6 @@ class PostsController < ApplicationController
 
     def post_params
       #ensures that the correct values are being inputed and validates them based on the criteria in post.rb
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :post_file)
     end
 end

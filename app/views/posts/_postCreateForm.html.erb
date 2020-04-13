@@ -17,8 +17,12 @@
 
   <!-- input for the post -->
   <p>
-    <%= form.label :title %><br>
+    <strong><%= form.label :title %><strong><br>
     <%= form.text_area :title %>
+  </p>
+  <p>
+    <strong>Image</strong><br>
+    <%= form.file_field :post_file %>
   </p>
   <p>
     <%= form.label :body %><br>

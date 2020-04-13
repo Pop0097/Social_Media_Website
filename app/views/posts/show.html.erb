@@ -20,6 +20,11 @@
 <article>
   <h3><%= link_to avatar_for(@post.user, size: 40), @post.user %><%= @post.user.username %>: <%= @post.title %> </h3>
   <p><%= @post.created_at.strftime("%B %d, 20%y") %></p>
+                                      <% if @post.post_file? %>
+                                        <%= post_file_for(@post) %><br>
+                                      <% else %>
+                                        No file :(
+                                      <% end %>
   <p> <%= @post.body %> </p>
   <table>
     <tr>
