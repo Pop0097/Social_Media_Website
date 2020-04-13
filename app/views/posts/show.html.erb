@@ -2,15 +2,15 @@
   <table id = "show_post_header">
     <tr>
       <td>
-        <%= link_to 'Back', :back %>
+        <%= link_to 'Back to Feed', root_path %>
       </td>
       <!-- To ensure only the owner of the post can edit or delete it, this if statement is used -->
       <% if @post.user == current_user %>
         <td>
-          <%= link_to 'Edit post', edit_post_path, id: "function_link" %>
+          <%= link_to 'Edit post', edit_post_path, id: "function_button" %>
         </td>
         <td>
-          <%= link_to 'Delete post', post_path(@post), id: "function_link", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %><br>
+          <%= link_to 'Delete post', post_path(@post), id: "function_button", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
         </td>
       <% end %>
     </tr>
@@ -26,6 +26,17 @@
                                         No file :(
                                       <% end %>
   <p> <%= @post.body %> </p>
+  <p>
+    <!-- determines if user has already liked the post and creates a different button depending on the circumstance -->
+    <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+    <% if pre_like %> <!-- user has already liked the post -->
+      <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+    <% else %>  <!-- user has not liked the post -->
+      <%= button_to 'Like', post_likes_path(@post), method: :post %>
+    <% end %>
+    <%= pluralize(@post.likes.count, "Like") %>
+  </p>
+
   <table>
     <tr>
       <td>

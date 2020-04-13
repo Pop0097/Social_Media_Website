@@ -1,10 +1,10 @@
 <aside>
   <!-- if statement added so other users cannot edit or delete other accounts -->
-  <%= link_to 'Return to Feed', root_path %><br>
+  <%= link_to 'Back to Feed', root_path, id: "function_button" %><br>
   <% if @user.id == current_user.id %>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %><br>
-    <%= link_to 'Edit Account', edit_user_registration_path %><br>
-    <%= link_to 'Delete Account', registration_path(current_user), id: "delete_link", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, id: "logout_button" %><br>
+    <%= link_to 'Edit Account', edit_user_registration_path, id: "function_button" %><br>
+    <%= link_to 'Delete Account', registration_path(current_user), id: "delete_account_button", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
   <% end %>
 </aside>
 
