@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_204439) do
+ActiveRecord::Schema.define(version: 2020_04_15_181151) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2020_04_13_204439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id"], name: "index_follows_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -54,15 +64,12 @@ ActiveRecord::Schema.define(version: 2020_04_13_204439) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.string "sex", default: "Male"
-    t.string "phone_number"
     t.integer "birth_year"
     t.string "birth_month"
-    t.integer "birth_day"
     t.string "name"
-    t.integer "age"
+    t.integer "time_zone"
     t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

@@ -10,6 +10,10 @@
 
 <h2> <%= @user.username %> </h2>
 <%= avatar_for(@user) %>
+<p>
+  Followers: <%= @user.followers.count %> | Following: <%= @user.following.count %>
+</p>
+<%= render 'followButton' %>
 
 <!-- table displays information of the user -->
 <table id = "profile_table">
