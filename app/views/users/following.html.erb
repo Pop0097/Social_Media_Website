@@ -1,0 +1,18 @@
+<!-- Displays all the people that the user follows -->
+
+<%= link_to 'Back', @user %>
+
+<h3> <%= @user.username %> is Following </h3>
+
+<table>
+  <% @following.reverse_each do |following| %>
+    <tr>
+      <td>
+        <%= link_to avatar_for(following, size: 35), following %>
+      </td>
+      <td>
+        <%= following.username %>
+      </td>
+    </tr>
+  <% end %>
+</table>

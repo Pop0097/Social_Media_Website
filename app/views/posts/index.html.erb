@@ -11,9 +11,16 @@
     <% @posts.reverse_each do |post| %>
       <tr>
         <td>
-          <%= link_to avatar_for(post.user, size: 35), post.user %><%= post.user.username %>:
+          <%= link_to avatar_for(post.user, size: 35), post.user %>
+        </td>
+        <td>
+          <%= post.user.username %>:
           <%= link_to post.title, post_path(post), id: "recents_display_title_links" %><br>
           <%= pluralize(post.likes.count, "Like") %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan = "2">
           <p id = "recents_display_body">
             <%= post.body %>
           </p>

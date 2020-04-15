@@ -17,22 +17,6 @@ class User < ApplicationRecord
   has_many :passive_follows, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_follows, source: :follower
 
-
-  #method allows current user to follow "other"
-  def follow(other)
-    active_follows.create(followed_id: other.id)
-  end
-
-  #method allows current user to unfollow "other"
-  def unfollow(other)
-    active_follows.find_by(followed_id: other.id).destroy
-  end
-
-  #returns true if the current user is following "other"
-  def following?(other)
-    following.include?(other)
-  end
-
   #for profile picture
   mount_uploader :avatar, AvatarUploader
 
