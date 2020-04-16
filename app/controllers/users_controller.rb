@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user! #User must be logged in before accessing view files in User class.
-  before_action :set_user #sets @user before calling other methods
+  before_action :set_user, except: [:index, :search] #sets @user before calling other methods
+
+  def index
+    @users = User.all
+  end
 
   def show
   end
@@ -30,6 +34,11 @@ class UsersController < ApplicationController
 
   def following
     @following = @user.following
+  end
+
+  def search
+    @users = User.where("username LIKE ?", "%" + params[:q] + "%") #finds users that have string "q" in their username
+    @search = params[:q]
   end
 
   private

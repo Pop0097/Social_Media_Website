@@ -18,13 +18,13 @@
 </nav>
 
 <article>
-  <h3><%= link_to avatar_for(@post.user, size: 40), @post.user %><%= @post.user.username %>: <%= @post.title %> </h3>
+  <h3><%= link_to avatar_for(@post.user, size: 40), @post.user %> <%= @post.user.username %>: <%= @post.title %> </h3>
   <p><%= @post.created_at.strftime("%B %d, 20%y") %></p>
-                                      <% if @post.post_file? %>
-                                        <%= post_file_for(@post) %><br>
-                                      <% else %>
-                                        No file :(
-                                      <% end %>
+  <center>
+    <% if @post.post_file? %>
+      <%= post_file_for(@post) %><br>
+    <% end %>
+  </center>
   <p> <%= @post.body %> </p>
   <p>
     <!-- determines if user has already liked the post and creates a different button depending on the circumstance -->
@@ -40,6 +40,14 @@
   <table>
     <tr>
       <td>
+        <strong> Comments </strong>
+      </td>
+      <td>
+        <strong> Post a Comment</strong>
+      </td>
+    </tr>
+    <tr>
+      <td width = "500">
         <% @post.comments.reverse_each do |comment| %>
           <p>
             <strong><%= comment.commenter %></strong>: <%= comment.created_at.strftime("%B %d, 20%y") %><br>
@@ -50,7 +58,7 @@
           <% end %>
         <% end %>
       </td>
-      <td>
+      <td valign = "top">
         <!-- this is the form that users fill out to post a comment. Calls _commentCreateForm.html.erb -->
         <%= render 'comments/commentCreateForm' %>
       </td>

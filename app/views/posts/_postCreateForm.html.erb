@@ -1,5 +1,5 @@
 <!-- Form used to create a post -->
-<%= form_with scope: :post, url: posts_path, local: true do |form| %>
+<%= form_for @post do |form| %>
   <!-- notifies user of any errors in their input -->
   <% if @post.errors.any? %>
     <div id = "post_error_explanaton">

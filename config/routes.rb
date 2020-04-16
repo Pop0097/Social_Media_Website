@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   match '/users/:id', to: 'users#show', via: 'get'
+  get 'search', to: 'users#search' #sets up route so search bar can be used to find users
 
   resources :posts do
     resources :comments

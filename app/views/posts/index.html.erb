@@ -1,8 +1,6 @@
 <!-- this is the main page of the website. All posts are displayed here -->
 
-<section id = "recents_title">
-  <h1> Recents </h1>
-</section>
+<h1> Recents </h1>
 
 <article>
   <table id = "recents_display">
@@ -10,7 +8,7 @@
     </tr>
     <% @posts.reverse_each do |post| %>
       <tr>
-        <td>
+        <td width = "50">
           <%= link_to avatar_for(post.user, size: 35), post.user %>
         </td>
         <td>
@@ -20,9 +18,13 @@
         </td>
       </tr>
       <tr>
-        <td colspan = "2">
+        <td colspan = "2" width = "900">
           <p id = "recents_display_body">
-            <%= post.body %>
+            <% if post.body.length >= 200 %>
+              <%= post.body[0..199] %>...
+            <% else %>
+              <%= post.body[0..199] %>
+            <% end %>
           </p>
         </td>
       </tr>

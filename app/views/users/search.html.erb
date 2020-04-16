@@ -1,0 +1,47 @@
+<%= link_to 'Return to Feed', root_path %><br>
+<%= link_to 'Cancel Search', users_path %>
+
+<h2> Popper Accounts </h2>
+
+<form action = "/search">
+  Search for Users<br>
+  <input name = "q" type="text" placeholder = "Search" aria-label="Search">
+  <button type="submit">Search</button>
+</form>
+<p></p>
+
+<% if @users.any? %>
+  <h3> Search Results </h3>
+
+  <table>
+    <tr>
+      <td colspan = "2">
+        <strong>Username:</strong>
+      </td>
+      <td>
+        <strong>Followers:</strong>
+      </td>
+      <td>
+        <strong>Following:</strong>
+      </td>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td width = "50">
+          <%= link_to avatar_for(user, size: 35), user %>
+        </td>
+        <td>
+          <%= user.username %>
+        </td>
+        <td>
+          <%= user.followers.count %>
+        </td>
+        <td>
+          <%= user.following.count %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No users have a username that contains "<%= @search %>"
+<% end %>

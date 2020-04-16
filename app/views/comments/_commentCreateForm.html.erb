@@ -1,6 +1,4 @@
 <!-- Form to create a comment -->
-<h4> Post a comment </h4>
-
 <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
     <%= form.hidden_field :commenter, value: current_user.username %>
   <p>
