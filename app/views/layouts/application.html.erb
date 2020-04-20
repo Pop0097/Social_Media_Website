@@ -21,10 +21,19 @@
             <% end %>
           </td>
           <td>
+            <% if current_user.present? %>
               <h1><%= link_to 'Popper', root_path, id: "Main_Title"%></h1>
+            <% else %>
+              <h1> Popper </h1>
+            <% end %>
           </td>
             <td>
           <% if current_user.present? %>
+            <% if @var != 1 %>
+              <%= link_to 'Recents', posts_path, id: "function_button" %>
+            <% else %>
+              <%= link_to 'Explore', explore_path, id: "function_button" %>
+            <% end %>
             <%= link_to 'Create Post', new_post_path, id: "function_button" %>
           <% else %>
             <%= link_to 'Sign In!', new_user_session_path, id: "sign_in_button" %>
@@ -41,7 +50,6 @@
     <p></p>
 
     <footer>
-      <%= link_to 'Find new Friends', users_path %>
       <p>Brought to you by Pop0097. Made in Spring 2020</p>
     </footer>
 

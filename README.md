@@ -6,7 +6,7 @@ Popper brings forth many valuable features such as:
 - Unique user accounts protected by a username/email and a password
 - Ability to share images and gifs
 - Ability to like and comment on posts
-- Ability to follow other users 
+- Ability to follow other users
 
 This version uses Ruby version 2.6.3 and Rails 6.0.2.2
 

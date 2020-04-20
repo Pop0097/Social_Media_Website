@@ -2,7 +2,11 @@
   <table id = "show_post_header">
     <tr>
       <td>
-        <%= link_to 'Back to Feed', root_path %>
+        <% if current_user.following?(@post.user) || current_user == @post.user %>
+          <%= link_to 'Back to Recents', posts_path %>
+        <% else %>
+          <%= link_to 'Back to Explore', explore_path %>
+        <% end %>
       </td>
       <!-- To ensure only the owner of the post can edit or delete it, this if statement is used -->
       <% if @post.user == current_user %>
@@ -47,7 +51,7 @@
       </td>
     </tr>
     <tr>
-      <td width = "500">
+      <td width = "300">
         <% @post.comments.reverse_each do |comment| %>
           <p>
             <strong><%= comment.commenter %></strong>: <%= comment.created_at.strftime("%B %d, 20%y") %><br>

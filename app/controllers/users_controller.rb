@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @counter = 1;
   end
 
   def edit

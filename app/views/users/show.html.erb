@@ -56,22 +56,31 @@
 <hbr>
 
 <!-- table displays the user's posts -->
+<h2> <%= @user.username %>'s Posts </h2>
 <table>
-  <tr>
-    <td>
-      <strong> <%= @user.username %>'s Posts </strong>
-    </td>
-  </tr>
   <% @user.posts.reverse_each do |post| %>
     <tr>
-      <td>
-        <%= link_to post.title, post_path(post), id: "recents_display_title_links" %> <br>
-        <% if post.body.length >= 200 %>
-          <%= post.body[0..199] %>...
-        <% else %>
-          <%= post.body[0..199] %>
+        <td>
+          <%= link_to post.title, post_path(post) %><br>
+          <%= pluralize(post.likes.count, "Like") %>
+        </td>
+        <% if post.post_file? %>
+          <tr>
+            <td colspan = "2" width = "900">
+              <%= post_file_for(post) %>
+            </td>
+          </tr>
         <% end %>
-      </td>
-    </tr>
+      <tr>
+        <td colspan = "2" width = "900">
+          <p id = "recents_display_body">
+            <% if post.body.length >= 200 %>
+              <%= post.body[0..199] %>... <i>(Click the title to see more)</i>
+            <% else %>
+              <%= post.body[0..199] %>
+            <% end %>
+          </p>
+        </td>
+      </tr>
   <% end %>
 </table>

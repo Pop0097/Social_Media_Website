@@ -1,13 +1,6 @@
-<%= link_to 'Return to Feed', root_path %>
+<%= link_to 'Return to Explore', explore_path %>
 
-<h2> Popper Accounts </h2>
-
-<form action = "/search">
-  Search for Users<br>
-  <input name = "q" type="text" placeholder = "Search" aria-label="Search">
-  <button type="submit">Search</button>
-</form>
-
+<h2> All Users </h2>
 
 <table>
   <center>
@@ -27,7 +20,7 @@
         <td width = "50">
           <%= link_to avatar_for(user, size: 35), user %>
         </td>
-        <td width = "60">
+        <td width = "90">
           <%= user.username %>
         </td>
         <td width = "85">

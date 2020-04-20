@@ -1,0 +1,56 @@
+<h1> Explore </h1>
+
+<form action = "/search">
+  <h2>Search for Users</h2>
+  <input name = "q" type="text" placeholder = "Search" aria-label="Search">
+  <button type="submit">Search</button>
+</form>
+
+<p></p>
+
+<%= link_to 'View all Users', users_path %>
+
+<p></p>
+
+<article>
+  <h2> All Posts </h2>
+  <i>The posts displayed are from users you do not follow</i>
+  <p></p>
+
+  <table id = "recents_display">
+    <tr>
+    </tr>
+    <% @posts.reverse_each do |post| %>
+    <!-- only displays posts from users the current user does not follow -->
+      <% if post.user != current_user && !current_user.following?(post.user)  %>
+      <tr>
+          <td width = "50">
+            <%= link_to avatar_for(post.user, size: 35), post.user %>
+          </td>
+          <td>
+            <%= post.user.username %>:
+            <%= link_to post.title, post_path(post) %><br>
+            <%= pluralize(post.likes.count, "Like") %>
+          </td>
+          <% if post.post_file? %>
+            <tr>
+              <td colspan = "2" width = "900">
+                <%= post_file_for(post) %>
+              </td>
+            </tr>
+          <% end %>
+        <tr>
+          <td colspan = "2" width = "900">
+            <p id = "recents_display_body">
+              <% if post.body.length >= 200 %>
+                <%= post.body[0..199] %>... <i>(Click the title to see more)</i>
+              <% else %>
+                <%= post.body[0..199] %>
+              <% end %>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</article>
