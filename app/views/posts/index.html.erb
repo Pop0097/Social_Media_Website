@@ -10,36 +10,52 @@
       <% @posts.reverse_each do |post| %>
         <% if current_user.following?(post.user) || post.user == current_user %>
         <tr>
-            <td width = "50">
-              <%= link_to avatar_for(post.user, size: 35), post.user %>
-            </td>
-            <td>
-              <%= post.user.username %>:
-              <%= link_to post.title, post_path(post) %><br>
-              <%= pluralize(post.likes.count, "Like") %>
-            </td>
-            <% if post.post_file? %>
-              <tr>
-                <td colspan = "2" width = "900">
-                  <%= post_file_for(post) %>
-                </td>
-              </tr>
+          <td width = "50">
+            <%= link_to avatar_for(post.user, size: 35), post.user %>
+          </td>
+          <td colspan = "2">
+            <%= post.user.username %>:
+            <%= link_to post.title, post_path(post) %><br>
+          </td>
+        </tr>
+        <tr>
+          <td width = "50"></td>
+          <td width = "100">
+            <%= pluralize(post.likes.count, "Like") %>
+          </td>
+          <td>
+            <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+            <% if pre_like %> <!-- user has already liked the post -->
+              <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+            <% else %>  <!-- user has not liked the post -->
+              <%= button_to 'Like', post_likes_path(post), method: :post %>
             <% end %>
-          <tr>
-            <td colspan = "2" width = "900">
-              <p id = "recents_display_body">
-                <% if post.body.length >= 200 %>
-                  <%= post.body[0..199] %>... <i>(Click the title to see more)</i>
-                <% else %>
-                  <%= post.body[0..199] %>
-                <% end %>
-              </p>
-            </td>
-          </tr>
-        <% end %>
+          </td>
+        </tr>
+          <% if post.post_file? %>
+            <tr>
+              <td colspan = "3" width = "900">
+                <%= post_file_for(post) %>
+              </td>
+            </tr>
+          <% end %>
+        <tr>
+          <td colspan = "3" width = "900">
+            <p id = "recents_display_body">
+              <% if post.body.length >= 200 %>
+                <%= post.body[0..199] %>... <i>(Click the title to see more)</i>
+              <% else %>
+                <%= post.body[0..199] %>
+              <% end %>
+            </p>
+          </td>
+        </tr>
       <% end %>
-    </table>
+    <% end %>
+  </table>
   <% else %>
     <p> Start following your friends by going to the 'Explore' page! </p>
   <% end %>
+  <!-- provides link that allows users to move between pages -->
+  <%= will_paginate @posts %>
 </article>

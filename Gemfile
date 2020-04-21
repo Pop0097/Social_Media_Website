@@ -10,6 +10,8 @@ gem 'devise', '~> 4.7.1'
 #use carrierwave for file uploads
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick', '4.10.1'
+#Used to paginate
+gem 'will_paginate', '~> 3.1.8'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server

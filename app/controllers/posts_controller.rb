@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy] #sets @post before calling other methods
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page], per_page: 20) #paginates the explore page so only 20 post are shown at a time
     @var = 1
   end
 
   def explore
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page], per_page: 20) #paginates the explore page so only 20 post are shown at a time
   end
 
   def new

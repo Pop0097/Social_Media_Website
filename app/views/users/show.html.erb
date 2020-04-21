@@ -58,7 +58,7 @@
 <!-- table displays the user's posts -->
 <h2> <%= @user.username %>'s Posts </h2>
 <table>
-  <% @user.posts.reverse_each do |post| %>
+  <% @posts.reverse_each do |post| %>
     <tr>
         <td>
           <%= link_to post.title, post_path(post) %><br>
@@ -84,3 +84,6 @@
       </tr>
   <% end %>
 </table>
+
+<!-- provides link that allows users to move between pages -->
+<%= will_paginate @posts %>

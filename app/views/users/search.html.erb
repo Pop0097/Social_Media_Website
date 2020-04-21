@@ -44,3 +44,6 @@
 <% else %>
   No users have a username that contains "<%= @search %>"
 <% end %>
+
+<!-- provides link that allows users to move between pages -->
+<%= will_paginate @users %>
