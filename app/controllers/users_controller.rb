@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user! #User must be logged in before accessing view files in User class.
   before_action :set_user, except: [:index, :search] #sets @user before calling other methods
 
+  def index
+    @users = User.paginate(:page => params[:page], per_page: 30) #paginates the results so only 30 users appear on the page at a time
+  end
+
   def show
     @posts = @user.posts.paginate(:page => params[:page], per_page: 20) #paginates the explore page so only 20 post are shown at a time
   end
