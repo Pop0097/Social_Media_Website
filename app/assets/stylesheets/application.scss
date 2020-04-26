@@ -1,0 +1,215 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$main_color: #EDECEC;
+$positive_function_color: #8D92F1;
+$negative_function_color: #F28F85;
+$neutral_function_color: #CDC7C7;
+$link_color: #620859;
+$font_fam: 'Raleway', sans-serif;
+$font_size: 14px;
+$button_margins: 10px 15px;
+$button_font_size: 14px;
+$button_border_radius: 8px;
+$border: 2px solid $main_color;
+$margin_size_large: 10%;
+$margin_size_small: 5%;
+
+html, body{
+  min-height:900px;
+  font-family: $font_fam;
+  height: 100%;
+}
+
+header{
+  text-align: center;
+  background-color: $main_color;
+  width: 100%;
+  height: 10%;
+}
+
+#container {
+  min-height: 80%;
+  width: 100%;
+}
+
+#main{
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+#footer{
+  background-color: $main_color;
+  position: relative;
+  width: 100%;
+  height: 5%;
+  margin-top: -5%;
+  clear: both;
+  text-align: center;
+}
+
+//for devise/sessions/new.html.erb
+#login_main{
+  margin-top: $margin_size_large;
+  margin-bottom: $margin_size_small;
+}
+
+#login_article{
+  width: 500px;
+  align-items: center;
+  text-align: center;
+  border: $border;
+  border-radius: 20px;
+  height: 320px;
+  padding: 20px;
+  background-color: $main_color;
+}
+
+#registration_field{
+  width: 400px;
+  height: 30px;
+  font-family: $font_fam;
+  font-size: $font_size;
+}
+
+#registration_label{
+  font-family: $font_fam;
+}
+
+#header_table{
+  background-color: $main_color;
+  text-align: center;
+  width: 100%;
+}
+
+#registration_button{
+  background-color: $positive_function_color;
+  border: none;
+  width: 400px;
+  height: 40px;
+  color: white;
+  padding: $button_margins;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+#cancel_link{
+  font-size: $font_size;
+  font-family: $font_fam;
+  color: $link_color;
+}
+
+//for devise/registrations/new.html.erb
+#sign_up_main{
+  height: 680px;
+  overflow: auto;
+}
+
+#signup_article{
+  margin-top: $margin_size_small;
+  margin-bottom: $margin_size_small;
+  width: 500px;
+  align-items: center;
+  text-align: center;
+  border: $border;
+  border-radius: 20px;
+  height: 750px;
+  padding: 20px;
+  background-color: $main_color;
+}
+
+#error_explanation{
+  text-align: center;
+  color: $negative_function_color;
+}
+
+
+//for home/index.html.erb
+#welcome_main{
+  margin-top: $margin_size_large;
+}
+
+#welcome_article{
+  width: 500px;
+  align-items: center;
+  text-align: center;
+  border: $border;
+  border-radius: 20px;
+  height: 325px;
+  padding: 20px;
+  background-color: $main_color;
+}
+
+#welcome_button{
+  background-color: $positive_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  width: 300px;
+  height: 100px;
+  font-size: 16;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: $button_border_radius;
+}
+
+#popper_logo{
+  font-size: 40px;
+}
+
+#credits{
+  text-align: right;
+  vertical-align: bottom;
+  bottom: 0;
+}
+
+#function_button_positive{
+  background-color: $positive_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+#function_button_negative{
+  background-color: $negative_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+
+#link_neutral{
+  font-size: $font_size;
+  font-family: $font_fam;
+  color: $link_color;
+}

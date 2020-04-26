@@ -1,56 +1,63 @@
-<h2>Sign up</h2>
+<center>
+  <article id = "signup_article">
+    <h2>Sign up</h2>
+    <div id = "sign_up_main">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="field">
+            <%= f.label :name, id: "registration_label" %><br>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", id: "registration_field" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+          <div class="field">
+            <%= f.label :username, id: "registration_label" %><br>
+            <%= f.text_field :username, autocomplete: "username", id: "registration_field" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autocomplete: "username" %>
-  </div>
+          <div class="field">
+            <%= f.label :email, id: "registration_label" %><br>
+            <%= f.email_field :email, autocomplete: "email", id: "registration_field" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+          <div class="field">
+            <%= f.label :birth_month, id: "registration_label" %><br>
+            <%= f.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
+          </div>
 
-  <div class="field">
-    <%= f.label :birth_month %><br />
-    <%= f.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
-  </div>
+          <div class="field">
+            <%= f.label :birth_year, id: "registration_label" %><br>
+            <%= f.number_field :birth_year, id: "registration_field" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :birth_year %><br />
-    <%= f.number_field :birth_year %>
-  </div>
+          <div class="field">
+            <%= f.label :sex, id: "registration_label" %><br>
+            <%= f.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
+          </div>
 
-  <div class="field">
-    <%= f.label :sex %><br />
-    <%= f.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
-  </div>
+          <div class="field">
+            <%= f.label :password, id: "registration_label" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br>
+            <%= f.password_field :password, autocomplete: "new-password", id: "registration_field" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+          <div class="field">
+            <%= f.label :password_confirmation, id: "registration_label" %><br>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "registration_field" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <p> You must be at least 14 years old to use Popper. My signing up, you are claiming that you are over 14 years old.</p>
-    <%= f.submit "Sign up" %>
-    <%= link_to "Cancel", root_path %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+          <div class="actions">
+            <p></p>
+            <p> You must be at least 14 years old to use Popper. My signing up, you are confirming that you are over 14 years old.</p>
+            <p></p>
+            <%= f.submit "Sign up", id: "registration_button"%>
+            <p></p>
+            <%= link_to "Cancel", root_path, id: "cancel_link" %>
+          </div>
+        <% end %>
+      </div>
+    <%= render "devise/shared/links" %>
+  </article>
+</center>

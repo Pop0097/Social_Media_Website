@@ -11,20 +11,18 @@
 
   <body>
     <header>
-      <table>
+      <table id = "header_table">
         <tr>
           <td>
             <% if current_user.present? %>
               <%= link_to avatar_for(current_user, size: 35), current_user %>
-            <% else %>
-              <%= link_to 'Sign Up!', new_user_registration_path, id: "sign_up_button" %>
             <% end %>
           </td>
           <td>
             <% if current_user.present? %>
-              <h1><%= link_to 'Popper', root_path, id: "Main_Title"%></h1>
+              <h1 id = "popper_logo"><%= link_to 'Popper', root_path, id: "Main_Title"%></h1>
             <% else %>
-              <h1> Popper </h1>
+              <h1 id = "popper_logo"> Popper </h1>
             <% end %>
           </td>
             <td>
@@ -34,22 +32,23 @@
             <% else %>
               <%= link_to 'Explore', explore_path, id: "function_button" %>
             <% end %>
-            <%= link_to 'Create Post', new_post_path, id: "function_button" %>
-          <% else %>
-            <%= link_to 'Sign In!', new_user_session_path, id: "sign_in_button" %>
+            <%= link_to 'Create Post', new_post_path, id: "function_button" %>            
           <% end %>
           </td>
         </tr>
       </table>
     </header>
 
-    <!-- <p class="notice"><%= notice %></p> <p class="alert"><%= alert %></p> -->
+    <div id = "container">
+      <div id = "main">
 
-    <!-- calls the other views in the Social_Media_Website folder -->
-    <%= yield %>
-    <p></p>
+          <!-- <p class="notice"><%= notice %></p> <p class="alert"><%= alert %></p> -->
+        <!-- calls the other views in the Social_Media_Website folder -->
+        <%= yield %>
+      </div>
+    </div>
 
-    <footer>
+    <footer id = "footer">
       <p>Brought to you by Pop0097. Made in Spring 2020</p>
     </footer>
 
