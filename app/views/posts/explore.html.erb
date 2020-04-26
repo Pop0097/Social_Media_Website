@@ -1,57 +1,62 @@
-<h1> Explore </h1>
 
-<form action = "/search">
-  <h2>Search for Users</h2>
-  <input name = "q" type="text" placeholder = "Search" aria-label="Search">
-  <button type="submit">Search</button>
-</form>
+<center>
+  <article id = "recents_article">
+    <h1> Explore </h1>
 
-<p></p>
+    <form action = "/search">
+      <h3>Search for Users</h3>
+      <input name = "q" type="text" placeholder = "Search" aria-label="Search" id = "search_bar"><br><br>
+      <button type="submit" id = "function_button_positive">Search</button>
+    </form>
 
-<%= link_to 'View all Users', users_path %>
+    <p></p>
 
-<p></p>
+    <%= link_to 'View all Users', users_path, id: "link_neutral" %>
 
-<article>
-  <h2> All Posts </h2>
-  <i>The posts displayed are from users you do not follow</i>
-  <p></p>
-  <table id = "recents_display">
-    <tr>
-    </tr>
-    <% @posts.reverse_each do |post| %>
-      <!-- only displays posts from users the current user does not follow -->
-      <% if post.user != current_user && !current_user.following?(post.user)  %>
-        <tr>
+    <p></p>
+    <hr id = "horizontal_ruling">
+
+    <h2> All Posts </h2>
+    <i>The posts displayed are from users you do not follow</i>
+    <p></p>
+      <% @posts.reverse_each do |post| %>
+        <!-- only displays posts from users the current user does not follow -->
+        <% if post.user != current_user && !current_user.following?(post.user)  %>
+        <table id = "recents_table">
+          <tr id = "top_row">
             <td width = "50">
-              <%= link_to avatar_for(post.user, size: 35), post.user %>
+              <%= link_to avatar_for(post.user, size: 35), post.user, id: "avatar_image" %>
             </td>
-            <td>
-              <%= post.user.username %>:
-              <%= link_to post.title, post_path(post) %><br>
+            <td colspan = "2">
+              <%= link_to post.user.username, post_path(post), id: "post_title_link" %>:
+              <%= link_to post.title, post_path(post), id: "post_title_link" %><br>
               <%= pluralize(post.likes.count, "Like") %>
             </td>
-            <% if post.post_file? %>
-              <tr>
-                <td colspan = "2" width = "900">
-                  <%= post_file_for(post) %>
-                </td>
-              </tr>
-            <% end %>
+          </tr>
+          <% if post.post_file? %>
+            <tr>
+              <td colspan = "3" width = "900">
+                <center>
+                  <%= link_to post_file_for(post), post_path(post), id: "post_link" %>
+                </center>
+              </td>
+            </tr>
+          <% end %>
           <tr>
-            <td colspan = "2" width = "900">
+            <td colspan = "3" width = "900">
               <p id = "recents_display_body">
                 <% if post.body.length >= 200 %>
-                  <%= post.body[0..199] %>... <i>(Click the title to see more)</i>
+                  <%= link_to post.body[0..199], post_path(post), id: "post_link" %>... <i id = "post_link" > (Click the title to see more)</i>
                 <% else %>
-                  <%= post.body[0..199] %>
+                  <%= link_to post.body[0..199], post_path(post), id: "post_link" %>
                 <% end %>
               </p>
             </td>
           </tr>
-        <% end %>
+        </table>
+      <% end %>
     <% end %>
-  </table>
-  <!-- provides link that allows users to move between pages -->
-  <%= will_paginate @posts %>
-</article>
+    <!-- provides link that allows users to move between pages -->
+    <%= will_paginate @posts %>
+  </article>
+</center>

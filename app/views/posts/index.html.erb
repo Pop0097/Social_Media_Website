@@ -1,49 +1,49 @@
 <!-- this is the main page of the website. All posts are displayed here -->
+<center>
+  <article id = "recents_article">
+    <p id = "recents_title"> Recents </p>
 
-<h1> Recents </h1>
-
-<article>
-  <% if current_user.following.count != 0 %>
-    <table id = "recents_display">
-      <tr>
-      </tr>
-      <% @posts.reverse_each do |post| %>
-        <% if current_user.following?(post.user) || post.user == current_user %>
-          <tr>
-            <td width = "50">
-              <%= link_to avatar_for(post.user, size: 35), post.user %>
-            </td>
-            <td colspan = "2">
-              <%= post.user.username %>:
-              <%= link_to post.title, post_path(post) %><br>
-              <%= pluralize(post.likes.count, "Like") %>
-            </td>
-          </tr>
-          <% if post.post_file? %>
-            <tr>
-              <td colspan = "3" width = "900">
-                <%= post_file_for(post) %>
-              </td>
-            </tr>
+    <% if current_user.following.count != 0 %>
+        <% @posts.reverse_each do |post| %>
+          <% if current_user.following?(post.user) || post.user == current_user %>
+            <table id = "recents_table">
+              <tr id = "top_row">
+                <td width = "50">
+                  <%= link_to avatar_for(post.user, size: 35), post.user, id: "avatar_image" %>
+                </td>
+                <td colspan = "2">
+                  <%= link_to post.user.username, post_path(post), id: "post_title_link" %>:
+                  <%= link_to post.title, post_path(post), id: "post_title_link" %><br>
+                  <%= pluralize(post.likes.count, "Like") %>
+                </td>
+              </tr>
+              <% if post.post_file? %>
+                <tr>
+                  <td colspan = "3" width = "900">
+                    <center>
+                      <%= link_to post_file_for(post), post_path(post), id: "post_link" %>
+                    </center>
+                  </td>
+                </tr>
+              <% end %>
+              <tr>
+                <td colspan = "3" width = "900">
+                  <p id = "recents_display_body">
+                    <% if post.body.length >= 200 %>
+                      <%= link_to post.body[0..199], post_path(post), id: "post_link" %>... <i id = "post_link" > (Click the title to see more)</i>
+                    <% else %>
+                      <%= link_to post.body[0..199], post_path(post), id: "post_link" %>
+                    <% end %>
+                  </p>
+                </td>
+              </tr>
+            </table>
           <% end %>
-          <tr>
-            <td colspan = "3" width = "900">
-              <p id = "recents_display_body">
-                <% if post.body.length >= 200 %>
-                  <%= post.body[0..199] %>... <i>(Click the title to see more)</i>
-                <% else %>
-                  <%= post.body[0..199] %>
-                <% end %>
-              </p>
-            </td>
-          </tr>
         <% end %>
-      <% end %>
-    </table>
-    <!-- provides link that allows users to move between pages -->
-    <%= will_paginate @users %>
-  <% else %>
-    <p> Start following your friends by going to the 'Explore' page! </p>
-  <% end %>
-
-</article>
+      <!-- provides link that allows users to move between pages -->
+      <%= will_paginate @users %>
+    <% else %>
+      <p> Start following your friends by going to the 'Explore' page! </p>
+    <% end %>
+  </article>
+</center>

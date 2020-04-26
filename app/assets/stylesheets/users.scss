@@ -1,3 +1,31 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+//for Users/search.html.erb
+$main_color: #EDECEC;
+$positive_function_color: #8D92F1;
+$negative_function_color: #F28F85;
+$neutral_function_color: #CDC7C7;
+$link_color: #620859;
+$font_fam: 'Raleway', sans-serif;
+$font_size: 16px;
+$button_margins: 10px 15px;
+$button_font_size: 14px;
+$button_border_radius: 8px;
+$border: 2px solid $main_color;
+$margin_size_large: 10%;
+$margin_size_small: 5%;
+
+#back_link{
+  text-align: left;
+  text-decoration: none;
+  font-size: $font_size;
+}
+
+#user_link{
+  text-align: left;
+  text-decoration: none;
+  font-size: $font_size;
+  color: black;
+}

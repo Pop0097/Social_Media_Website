@@ -20,7 +20,7 @@
           </td>
           <td>
             <% if current_user.present? %>
-              <h1 id = "popper_logo"><%= link_to 'Popper', root_path, id: "Main_Title"%></h1>
+              <h1 id = "popper_logo"><%= link_to 'Popper', root_path, id: "popper_logo"%></h1>
             <% else %>
               <h1 id = "popper_logo"> Popper </h1>
             <% end %>
@@ -28,11 +28,11 @@
             <td>
           <% if current_user.present? %>
             <% if @var != 1 %>
-              <%= link_to 'Recents', posts_path, id: "function_button" %>
+              <%= link_to 'Recents', posts_path, id: "function_button_positive" %>
             <% else %>
-              <%= link_to 'Explore', explore_path, id: "function_button" %>
+              <%= link_to 'Explore', explore_path, id: "function_button_positive" %>
             <% end %>
-            <%= link_to 'Create Post', new_post_path, id: "function_button" %>            
+            <%= link_to 'Create Post', new_post_path, id: "function_button_positive" %>
           <% end %>
           </td>
         </tr>

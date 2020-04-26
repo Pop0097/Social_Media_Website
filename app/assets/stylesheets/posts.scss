@@ -1,3 +1,88 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+$main_color: #EDECEC;
+$positive_function_color: #8D92F1;
+$negative_function_color: #F28F85;
+$neutral_function_color: #CDC7C7;
+$link_color: #620859;
+$font_fam: 'Raleway', sans-serif;
+$font_size: 14px;
+$button_margins: 10px 15px;
+$button_font_size: 14px;
+$button_border_radius: 8px;
+$border: 2px solid $main_color;
+$margin_size_large: 10%;
+$margin_size_small: 5%;
+
+//for both Posts/index.html.erb and Posts/explore.html.erb
+#recents_article{
+  width: 600px;
+  border: $border;
+  border-radius: 20px;
+  margin-top: $margin_size_small;
+  margin-bottom: $margin_size_small;
+  padding: 20px;
+}
+
+#recents_title{
+  font-size: 40px;
+}
+
+#recents_table{
+  width: 500px;
+  border-top: $border;
+  padding: 10px;
+}
+
+#avatar_image{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+
+}
+
+#post_title_link{
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+#post_link{
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+#horizontal_ruling{
+  color: $main_color;
+}
+
+//Also applies to Users/Search.html.erb
+#search_bar{
+  width: 400px;
+  height: 30px;
+  font-family: $font_fam;
+  font-size: $font_size;
+}
+
+//for Posts/show.html.erb
+#comments_main{
+  height: 500px;
+  overflow: auto;
+  width: 300px;
+}
+
+#display_table{
+  width: 500px;
+}
+
+#show_post_nav{
+  width: 700px;
+  padding-top: 25px;
+}
+
+#show_post_header{
+  width: 500px;
+}

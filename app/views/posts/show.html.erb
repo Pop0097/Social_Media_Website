@@ -1,71 +1,78 @@
-<nav>
-  <table id = "show_post_header">
-    <tr>
-      <td>
-        <% if current_user.following?(@post.user) || current_user == @post.user %>
-          <%= link_to 'Back to Recents', posts_path %>
-        <% else %>
-          <%= link_to 'Back to Explore', explore_path %>
+<center>
+  <nav id = "show_post_nav">
+    <table id = "show_post_header">
+      <tr>
+        <td>
+          <% if current_user.following?(@post.user) || current_user == @post.user %>
+            <%= link_to 'Recents', posts_path, id: "function_button" %>
+          <% else %>
+            <%= link_to 'Explore', explore_path, id: "function_button" %>
+          <% end %>
+        </td>
+        <!-- To ensure only the owner of the post can edit or delete it, this if statement is used -->
+        <% if @post.user == current_user %>
+          <td>
+            <%= link_to 'Edit post', edit_post_path, id: "function_button" %>
+          </td>
+          <td>
+            <%= link_to 'Delete post', post_path(@post), id: "function_button_negative", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
+          </td>
         <% end %>
-      </td>
-      <!-- To ensure only the owner of the post can edit or delete it, this if statement is used -->
-      <% if @post.user == current_user %>
-        <td>
-          <%= link_to 'Edit post', edit_post_path, id: "function_button" %>
+      </tr>
+    </table>
+  </nav>
+</center>
+
+<center>
+  <article id = "recents_article">
+    <table id = "display_table">
+      <tr>
+        <td width = "75">
+          <h3 style = "text-align:left;font-size:20px;"><%= link_to avatar_for(@post.user, size: 50), @post.user %> </h3>
         </td>
         <td>
-          <%= link_to 'Delete post', post_path(@post), id: "function_button", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
+          <h3 style = "text-align:left;font-size:20px;"> <%= @post.user.username %>: <%= @post.title %> </h3>
+          <p style = "text-align:left"><%= @post.created_at.strftime("%B %d, 20%y") %></p>
         </td>
+      </tr>
+    </table>
+    <center>
+      <% if @post.post_file? %>
+        <%= post_file_for(@post) %><br>
       <% end %>
-    </tr>
-  </table>
-</nav>
+    </center>
+    <p style = "text-align:left;font-size:16px;"> <%= @post.body %> </p>
+    <p style = "text-align:left">
+      <!-- determines if user has already liked the post and creates a different button depending on the circumstance -->
+      <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %> <!-- user has already liked the post -->
+        <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete, id: "function_button_negative" %>
+      <% else %>  <!-- user has not liked the post -->
+        <%= button_to 'Like', post_likes_path(@post), method: :post, id: "function_button_positive" %>
+      <% end %>
+      <%= pluralize(@post.likes.count, "Like") %>
+    </p>
 
-<article>
-  <h3><%= link_to avatar_for(@post.user, size: 40), @post.user %> <%= @post.user.username %>: <%= @post.title %> </h3>
-  <p><%= @post.created_at.strftime("%B %d, 20%y") %></p>
-  <center>
-    <% if @post.post_file? %>
-      <%= post_file_for(@post) %><br>
-    <% end %>
-  </center>
-  <p> <%= @post.body %> </p>
-  <p>
-    <!-- determines if user has already liked the post and creates a different button depending on the circumstance -->
-    <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %> <!-- user has already liked the post -->
-      <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-    <% else %>  <!-- user has not liked the post -->
-      <%= button_to 'Like', post_likes_path(@post), method: :post %>
-    <% end %>
-    <%= pluralize(@post.likes.count, "Like") %>
-  </p>
-
-  <table>
-    <tr>
-      <td>
-        <strong> Comments </strong>
-      </td>
-      <td>
-        <strong> Post a Comment</strong>
-      </td>
-    </tr>
-    <tr>
-      <td width = "300">
+    <% if @post.comments.count >= 1 %>
+      <hr>
+      <h3> Comments</h3>
+      <div id = "comments_main">
         <% @post.comments.reverse_each do |comment| %>
-          <p>
+          <p style = "text-align:left">
             <strong><%= comment.commenter %></strong>: <%= comment.created_at.strftime("%B %d, 20%y") %><br>
             <%= comment.body %>
           </p>
           <% if (@post.user == current_user) or (comment.commenter == current_user.username) %>
-            <%= link_to 'Delete', [comment.post, comment], method: :delete %>
+            <p style = "text-align:left">
+              <%= button_to 'Delete', [comment.post, comment], method: :delete, id: "delete_comment" %>
+            </p>
+            <hr>
           <% end %>
         <% end %>
-      </td>
-      <td valign = "top">
-        <!-- this is the form that users fill out to post a comment. Calls _commentCreateForm.html.erb -->
-        <%= render 'comments/commentCreateForm' %>
-      </td>
-    </tr>
-  </table>
-</article>
+      </div>
+    <% end %>
+    <hr id = "horizontal_ruling">
+    <h3> Post a Comment</h3>
+    <%= render 'comments/commentCreateForm' %>
+  </article>
+</center>

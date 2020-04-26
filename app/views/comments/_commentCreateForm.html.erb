@@ -3,10 +3,10 @@
 <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
     <%= form.hidden_field :commenter, value: current_user.username %>
   <p>
-    <%= form.text_area :body, placeholder: 'Enter Commment' %>
+    <%= form.text_area :body, placeholder: 'Enter Commment', id: "comment_field" %>
   </p>
   <p>
-    <%= form.submit %><br>
+    <%= form.submit "Post Comment", id: "post_comment_button"%><br>
     <i> Your comment must be under 150 characters </i>
   </p>
 <% end %>

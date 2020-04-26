@@ -20,7 +20,7 @@ $negative_function_color: #F28F85;
 $neutral_function_color: #CDC7C7;
 $link_color: #620859;
 $font_fam: 'Raleway', sans-serif;
-$font_size: 14px;
+$font_size: 16px;
 $button_margins: 10px 15px;
 $button_font_size: 14px;
 $button_border_radius: 8px;
@@ -30,6 +30,7 @@ $margin_size_small: 5%;
 
 html, body{
   min-height:900px;
+  min-width: 800px;
   font-family: $font_fam;
   height: 100%;
 }
@@ -57,6 +58,7 @@ header{
   width: 100%;
   height: 5%;
   margin-top: -5%;
+  padding: 10px;
   clear: both;
   text-align: center;
 }
@@ -173,6 +175,9 @@ header{
 
 #popper_logo{
   font-size: 40px;
+  font-family: $font_fam;
+  text-decoration: none;
+  color: black;
 }
 
 #credits{
@@ -199,6 +204,8 @@ header{
   background-color: $negative_function_color;
   border: none;
   color: white;
+  width: 100px;
+  height: 40px;
   padding: $button_margins;
   text-align: center;
   text-decoration: none;
@@ -207,9 +214,23 @@ header{
   border-radius: $button_border_radius;
 }
 
+#function_button{
+  background-color: $neutral_function_color;
+  border: none;
+  color: white;
+  width: 100px;
+  height: 40px;
+  padding: $button_margins;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
 
 #link_neutral{
   font-size: $font_size;
   font-family: $font_fam;
   color: $link_color;
+  text-decoration: none;
 }

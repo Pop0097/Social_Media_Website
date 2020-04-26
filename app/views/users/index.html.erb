@@ -1,37 +1,53 @@
-<%= link_to 'Return to Explore', explore_path %>
+<center>
+  <article id = "recents_article">
+    <p style="text-align:left">
+      <%= link_to 'Return to Explore', explore_path, id: "back_link" %>
+    </p>
 
-<h2> All Users </h2>
+    <h2> All Users </h2>
 
-<table>
-  <center>
-    <tr>
-      <td colspan = "2">
-        <strong>Username:</strong>
-      </td>
-      <td>
-        <strong>Followers:</strong>
-      </td>
-      <td>
-        <strong>Following:</strong>
-      </td>
-    </tr>
-    <% @users.each do |user| %>
+    <table id = "recents_table">
       <tr>
-        <td width = "50">
-          <%= link_to avatar_for(user, size: 35), user %>
+        <td colspan = "2" width = "100">
+          <center>
+            <strong>Username:</strong>
+          </center>
         </td>
-        <td width = "90">
-          <%= user.username %>
+        <td width = "150">
+          <center>
+            <strong>Followers:</strong>
+          </center>
         </td>
-        <td width = "85">
-          <%= user.followers.count %>
-        </td>
-        <td width = "85">
-          <%= user.following.count %>
+        <td width = "150">
+          <center>
+            <strong>Following:</strong>
+          </center>
         </td>
       </tr>
+    </table>
+    <% @users.each do |user| %>
+      <table id = "recents_table">
+        <tr>
+          <td width = "50">
+            <%= link_to avatar_for(user, size: 35), user %>
+          </td>
+          <td width = "150">
+            <%= link_to user.username, user, id: "user_link"%>
+          </td>
+          <td width = "150">
+            <center>
+              <%= user.followers.count %>
+            </center>
+          </td>
+          <td width = "150">
+            <center>
+              <%= user.following.count %>
+            </center>
+          </td>
+        </tr>
+      </table>
     <% end %>
-  </center>
-</table>
-<!-- provides link that allows users to move between pages -->
-<%= will_paginate @users %>
+    <!-- provides link that allows users to move between pages -->
+    <%= will_paginate @users %>
+  </article>
+</center>

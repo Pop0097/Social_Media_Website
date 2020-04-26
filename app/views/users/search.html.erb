@@ -1,49 +1,71 @@
-<%= link_to 'Return to Explore', explore_path %><br>
+<center>
+  <article id = "recents_article">
+    <p style="text-align:left">
+      <%= link_to 'Return to Explore', explore_path, id: "back_link" %>
+    </p>
 
-<h2> Popper Accounts </h2>
+    <h2> Popper Accounts </h2>
 
-<form action = "/search">
-  Search for Users<br>
-  <input name = "q" type="text" placeholder = "Search" aria-label="Search">
-  <button type="submit">Search</button>
-</form>
-<p></p>
+    <form action = "/search">
+      <h3>Search for Users</h3>
+      <input name = "q" type="text" placeholder = "Search" aria-label="Search" id = "search_bar"><br><br>
+      <button type="submit" id = "function_button_positive">Search</button>
+    </form>
+    <p></p>
 
-<% if @users.any? %>
-  <h3> Search Results </h3>
+    <%= link_to 'View all Users', users_path, id: "link_neutral" %>
 
-  <table>
-    <tr>
-      <td colspan = "2">
-        <strong>Username:</strong>
-      </td>
-      <td>
-        <strong>Followers:</strong>
-      </td>
-      <td>
-        <strong>Following:</strong>
-      </td>
-    </tr>
-    <% @users.each do |user| %>
-      <tr>
-        <td width = "50">
-          <%= link_to avatar_for(user, size: 35), user %>
-        </td>
-        <td>
-          <%= user.username %>
-        </td>
-        <td>
-          <%= user.followers.count %>
-        </td>
-        <td>
-          <%= user.following.count %>
-        </td>
-      </tr>
+    <p></p>
+    <hr id = "horizontal_ruling">
+
+    <% if @users.any? %>
+      <h3> Search Results </h3>
+      <table id = "recents_table">
+        <tr>
+          <td colspan = "2" width = "100">
+            <center>
+              <strong>Username:</strong>
+            </center>
+          </td>
+          <td width = "150">
+            <center>
+              <strong>Followers:</strong>
+            </center>
+          </td>
+          <td width = "150">
+            <center>
+              <strong>Following:</strong>
+            </center>
+          </td>
+        </tr>
+      </table>
+        <% @users.each do |user| %>
+          <table id = "recents_table">
+            <tr>
+              <td width = "50">
+                <%= link_to avatar_for(user, size: 35), user %>
+              </td>
+              <td width = "150">
+                <%= link_to user.username, user, id: "user_link"%>
+              </td>
+              <td width = "150">
+                <center>
+                  <%= user.followers.count %>
+                </center>
+              </td>
+              <td width = "150">
+                <center>
+                  <%= user.following.count %>
+                </center>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+    <% else %>
+      No users have a username that contains "<%= @search %>"
     <% end %>
-  </table>
-<% else %>
-  No users have a username that contains "<%= @search %>"
-<% end %>
 
-<!-- provides link that allows users to move between pages -->
-<%= will_paginate @users %>
+    <!-- provides link that allows users to move between pages -->
+    <%= will_paginate @users %>
+  </article>
+</center>
