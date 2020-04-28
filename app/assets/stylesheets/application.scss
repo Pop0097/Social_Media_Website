@@ -28,6 +28,7 @@ $border: 2px solid $main_color;
 $margin_size_large: 10%;
 $margin_size_small: 5%;
 
+//General
 html, body{
   min-height:900px;
   min-width: 800px;
@@ -48,6 +49,7 @@ header{
 }
 
 #main{
+  min-height: 80vh;
   padding-bottom: 30px;
   width: 100%;
 }
@@ -63,120 +65,11 @@ header{
   text-align: center;
 }
 
-//for devise/sessions/new.html.erb
-#login_main{
-  margin-top: $margin_size_large;
-  margin-bottom: $margin_size_small;
-}
-
-#login_article{
-  width: 500px;
-  align-items: center;
-  text-align: center;
-  border: $border;
-  border-radius: 20px;
-  height: 320px;
-  padding: 20px;
-  background-color: $main_color;
-}
-
-#registration_field{
-  width: 400px;
-  height: 30px;
-  font-family: $font_fam;
-  font-size: $font_size;
-}
-
-#registration_label{
-  font-family: $font_fam;
-}
-
-#header_table{
-  background-color: $main_color;
-  text-align: center;
-  width: 100%;
-}
-
-#registration_button{
-  background-color: $positive_function_color;
-  border: none;
-  width: 400px;
-  height: 40px;
-  color: white;
-  padding: $button_margins;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: $button_font_size;
-  border-radius: $button_border_radius;
-}
-
-#cancel_link{
-  font-size: $font_size;
-  font-family: $font_fam;
-  color: $link_color;
-}
-
-//for devise/registrations/new.html.erb
-#sign_up_main{
-  height: 680px;
-  overflow: auto;
-}
-
-#signup_article{
-  margin-top: $margin_size_small;
-  margin-bottom: $margin_size_small;
-  width: 500px;
-  align-items: center;
-  text-align: center;
-  border: $border;
-  border-radius: 20px;
-  height: 750px;
-  padding: 20px;
-  background-color: $main_color;
-}
-
-#error_explanation{
-  text-align: center;
-  color: $negative_function_color;
-}
-
-
-//for home/index.html.erb
-#welcome_main{
-  margin-top: $margin_size_large;
-}
-
-#welcome_article{
-  width: 500px;
-  align-items: center;
-  text-align: center;
-  border: $border;
-  border-radius: 20px;
-  height: 325px;
-  padding: 20px;
-  background-color: $main_color;
-}
-
-#welcome_button{
-  background-color: $positive_function_color;
-  border: none;
-  color: white;
-  padding: $button_margins;
-  width: 300px;
-  height: 100px;
-  font-size: 16;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  border-radius: $button_border_radius;
-}
-
 #popper_logo{
   font-size: 40px;
   font-family: $font_fam;
   text-decoration: none;
+  font-weight: bold;
   color: black;
 }
 
@@ -233,4 +126,164 @@ header{
   font-family: $font_fam;
   color: $link_color;
   text-decoration: none;
+}
+
+#cancel_link{
+  font-size: $font_size;
+  font-family: $font_fam;
+  color: $link_color;
+  text-decoration: none;
+}
+
+#header_function_button{
+  background-color: $positive_function_color;
+  border: none;
+  color: white;
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+#avatar_image{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px black;
+  background-color: black;
+}
+
+//for devise/sessions/new.html.erb
+#login_main{
+  margin-top: $margin_size_small;
+  margin-bottom: $margin_size_small;
+}
+
+#login_article{
+  width: 500px;
+  align-items: center;
+  text-align: center;
+  border: $border;
+  border-radius: 20px;
+  height: 320px;
+  padding: 20px;
+  background-color: $main_color;
+}
+
+#registration_field{
+  width: 400px;
+  height: 30px;
+  font-family: $font_fam;
+  font-size: $font_size;
+}
+
+#registration_label{
+  font-family: $font_fam;
+}
+
+#header_table{
+  background-color: $main_color;
+  text-align: center;
+  width: 100%;
+}
+
+#registration_button{
+  background-color: $positive_function_color;
+  border: none;
+  width: 400px;
+  height: 40px;
+  color: white;
+  padding: $button_margins;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+//for devise/registrations/new.html.erb
+#sign_up_main{
+  height: 680px;
+  overflow: auto;
+}
+
+#signup_article{
+  margin-top: $margin_size_small;
+  margin-bottom: $margin_size_small;
+  width: 500px;
+  align-items: center;
+  text-align: center;
+  border: $border;
+  border-radius: 20px;
+  height: 750px;
+  padding: 20px;
+  background-color: $main_color;
+}
+
+#error_explanation{
+  text-align: center;
+  color: $negative_function_color;
+}
+
+select {
+    appearance: none;
+    outline: 0;
+    background: $main_color;
+    background-image: none;
+    border:1px solid black;
+}
+
+.select {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 30px;
+    line-height: 3;
+    background: $main_color;
+    overflow: hidden;
+    border-radius: .25em;
+}
+
+select {
+    width: 400px;
+    height:30px;
+    margin: 0;
+    padding: 0 0 0 .5em;
+    color: #000000;
+    cursor: pointer;
+}
+
+//for home/index.html.erb
+#welcome_main{
+  margin-top: $margin_size_small;
+}
+
+#welcome_article{
+  width: 500px;
+  height: 400px;
+  align-items: center;
+  text-align: center;
+  border: $border;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: $main_color;
+}
+
+#welcome_button{
+  background-color: $positive_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  width: 300px;
+  height: 100px;
+  font-size: 16;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: $button_border_radius;
 }

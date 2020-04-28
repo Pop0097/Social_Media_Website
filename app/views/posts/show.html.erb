@@ -1,30 +1,14 @@
 <center>
-  <nav id = "show_post_nav">
-    <table id = "show_post_header">
-      <tr>
-        <td>
-          <% if current_user.following?(@post.user) || current_user == @post.user %>
-            <%= link_to 'Recents', posts_path, id: "function_button" %>
-          <% else %>
-            <%= link_to 'Explore', explore_path, id: "function_button" %>
-          <% end %>
-        </td>
-        <!-- To ensure only the owner of the post can edit or delete it, this if statement is used -->
-        <% if @post.user == current_user %>
-          <td>
-            <%= link_to 'Edit post', edit_post_path, id: "function_button" %>
-          </td>
-          <td>
-            <%= link_to 'Delete post', post_path(@post), id: "function_button_negative", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
-          </td>
-        <% end %>
-      </tr>
-    </table>
-  </nav>
-</center>
-
-<center>
   <article id = "recents_article">
+    <% if current_user.following?(@post.user) || current_user == @post.user %>
+      <p style="text-align:left">
+        <%= link_to 'Recents', posts_path, id: "back_link" %>
+      </p>
+    <% else %>
+      <p style="text-align:left">
+        <%= link_to 'Explore', explore_path, id: "back_link" %>
+      </p>
+    <% end %>
     <table id = "display_table">
       <tr>
         <td width = "75">
@@ -51,13 +35,30 @@
         <%= button_to 'Like', post_likes_path(@post), method: :post, id: "function_button_positive" %>
       <% end %>
       <%= pluralize(@post.likes.count, "Like") %>
+      <br><br>
+      <% if @post.user == current_user %>
+        <table>
+          <tr>
+            <td>
+              <%= button_to 'Edit post', edit_post_path, :method => :get, id: "post_function_button" %>
+            </td>
+            <td>
+              <%= button_to 'Delete post', post_path(@post), :method => :get, id: "post_function_button_negative", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
     </p>
 
     <% if @post.comments.count >= 1 %>
       <hr>
       <h3> Comments</h3>
       <div id = "comments_main">
+      <% @counter = 1 %>
         <% @post.comments.reverse_each do |comment| %>
+          <% if @counter != 1 %>
+            <hr>
+          <% end %>
           <p style = "text-align:left">
             <strong><%= comment.commenter %></strong>: <%= comment.created_at.strftime("%B %d, 20%y") %><br>
             <%= comment.body %>
@@ -66,8 +67,8 @@
             <p style = "text-align:left">
               <%= button_to 'Delete', [comment.post, comment], method: :delete, id: "delete_comment" %>
             </p>
-            <hr>
           <% end %>
+          <% @counter += 1 %>
         <% end %>
       </div>
     <% end %>

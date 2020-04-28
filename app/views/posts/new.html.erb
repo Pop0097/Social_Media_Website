@@ -1,6 +1,13 @@
-<h3>What's on your mind?</h3>
+<center>
+  <article id = "create_article">
+    <div id = "new_post_main">
+      <h2>What's on your mind?</h2>
 
-<!-- form used to create posts: calls _postCreateForm.html.erb -->
-<%= render 'posts/postCreateForm' %>
+      <!-- form used to create posts: calls _postCreateForm.html.erb -->
+      <%= render 'posts/postCreateForm' %>
 
 <%= link_to 'Cancel', posts_path %>
+      <%= link_to 'Cancel', posts_path, id: "cancel_link" %>
+    </div>
+  </article>
+</center>

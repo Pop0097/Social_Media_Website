@@ -22,7 +22,9 @@
 
           <div class="field">
             <%= f.label :birth_month, id: "registration_label" %><br>
-            <%= f.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
+            <div>
+              <%= f.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
+            </div>
           </div>
 
           <div class="field">
@@ -32,7 +34,11 @@
 
           <div class="field">
             <%= f.label :sex, id: "registration_label" %><br>
-            <%= f.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
+            <div>
+              <center>
+                <%= f.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
+              </center>
+            </div>
           </div>
 
           <div class="field">

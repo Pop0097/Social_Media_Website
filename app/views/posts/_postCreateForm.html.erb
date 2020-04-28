@@ -3,33 +3,31 @@
   <!-- notifies user of any errors in their input -->
   <% if @post.errors.any? %>
     <div id = "post_error_explanaton">
-      <h2>
+      <strong>
         <%= pluralize(@post.errors.count, "error") %>
-        are present. Please fix them before sharing the post.
-      </h2>
-      <ul>
+        are present. Please fix them before sharing the post.<br>
+      </strong>
         <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <%= message %><br>
         <% end %>
-      </ul>
     </div>
   <% end %>
 
   <!-- input for the post -->
   <p>
     <strong><%= form.label :title %><strong><br>
-    <%= form.text_area :title %>
+    <%= form.text_area :title, id: "title_input_posts" %>
   </p>
   <p>
     <strong>Image</strong><br>
-    <%= form.file_field :post_file %>
+    <%= form.file_field :post_file, id: "filelink" %>
   </p>
   <p>
     <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, id: "body_input_posts" %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit "Share", id: "function_button_positive"%>
   </p>
 <% end %>

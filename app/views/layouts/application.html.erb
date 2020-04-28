@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Popper! </title>
+    <title> Popper </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,37 +12,42 @@
     <header>
       <table id = "header_table">
         <tr>
-          <td>
-            <% if current_user.present? %>
-              <%= link_to avatar_for(current_user, size: 35), current_user %>
-            <% end %>
+          <td width = "240px">
+            <center>
+              <% if current_user.present? %>
+                <%= link_to current_user do %>
+                  <% @link = current_user.avatar.url(:thumb) %>
+                    <div id = "avatar_image" style = "background: url(<%= @link %>)" >
+                    </div>
+                <% end %>
+              <% end %>
+            </center>
           </td>
           <td>
             <% if current_user.present? %>
-              <h1 id = "popper_logo"><%= link_to 'Popper', root_path, id: "popper_logo"%></h1>
+              <p id = "popper_logo"><%= link_to 'Popper', root_path, id: "popper_logo"%></p>
             <% else %>
-              <h1 id = "popper_logo"> Popper </h1>
+              <p id = "popper_logo"> Popper </p>
             <% end %>
           </td>
-            <td>
           <% if current_user.present? %>
-            <% if @var != 1 %>
-              <%= link_to 'Recents', posts_path, id: "function_button_positive" %>
-            <% else %>
-              <%= link_to 'Explore', explore_path, id: "function_button_positive" %>
-            <% end %>
-            <%= link_to 'Create Post', new_post_path, id: "function_button_positive" %>
+            <td width = "120px">
+                <% if @var != 1 %>
+                  <%= button_to 'Recents', posts_path, :method => :get, id: "header_function_button" %>
+                <% else %>
+                  <%= button_to 'Explore', explore_path, :method => :get, id: "header_function_button" %>
+                <% end %>
+            </td>
+            <td width = "120px">
+              <%= button_to 'Create Post', new_post_path, :method => :get, id: "header_function_button" %>
+            </td>
           <% end %>
-          </td>
         </tr>
       </table>
     </header>
 
     <div id = "container">
       <div id = "main">
-
-          <!-- <p class="notice"><%= notice %></p> <p class="alert"><%= alert %></p> -->
-        <!-- calls the other views in the Social_Media_Website folder -->
         <%= yield %>
       </div>
     </div>

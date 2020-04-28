@@ -3,13 +3,20 @@
   <article id = "recents_article">
     <p id = "recents_title"> Recents </p>
 
+
+
+
     <% if current_user.following.count != 0 %>
         <% @posts.reverse_each do |post| %>
           <% if current_user.following?(post.user) || post.user == current_user %>
             <table id = "recents_table">
               <tr id = "top_row">
                 <td width = "50">
-                  <%= link_to avatar_for(post.user, size: 35), post.user, id: "avatar_image" %>
+                  <%= link_to post.user do %>
+                    <% @link = post.user.avatar.url(:thumb) %>
+                    <div id = "avatar_image" style = "background: url(<%= @link %>)" >
+                    </div>
+                  <% end %>
                 </td>
                 <td colspan = "2">
                   <%= link_to post.user.username, post_path(post), id: "post_title_link" %>:

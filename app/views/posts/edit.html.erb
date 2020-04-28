@@ -1,6 +1,11 @@
-<h3>Edit Post</h3>
+<center>
+  <article id = "create_article">
+    <div id = "new_post_main">
+      <h2>Edit Post</h2>
+      <!-- form used to create posts: calls _postCreateForm.html.erb -->
+      <%= render 'posts/postCreateForm' %>
 
-<!-- form used to create posts: calls _postCreateForm.html.erb -->
-<%= render 'posts/postCreateForm' %>
-
-<%= link_to 'Cancel', post_path(@post) %>
+      <%= link_to 'Cancel', post_path(@post), id: "cancel_link" %>
+    </div>
+  </article>
+</center>

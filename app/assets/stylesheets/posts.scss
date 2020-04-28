@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$main_color: #EDECEC;
+$main_color: #C5BEC4;
 $positive_function_color: #8D92F1;
 $negative_function_color: #F28F85;
 $neutral_function_color: #CDC7C7;
@@ -85,4 +85,73 @@ $margin_size_small: 5%;
 
 #show_post_header{
   width: 500px;
+}
+
+#post_function_button{
+  background-color: $main_color;
+  border: none;
+  color: white;
+  width: 100px;
+  height: 30px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+#post_function_button_negative{
+  background-color: $negative_function_color;
+  border: none;
+  color: white;
+  width: 100px;
+  height: 30px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+//for Posts/new.html.erb and Posts/_postCreateForm.html.erb
+#create_article{
+  width: 600px;
+  height: 600px;
+  border: $border;
+  border-radius: 20px;
+  margin-top: $margin_size_small;
+  margin-bottom: $margin_size_small;
+  padding: 20px;
+}
+
+#new_post_main{
+  margin-top: 35px;
+  height: 530px;
+  overflow: auto;
+  width: 450px;
+}
+
+#title_input_posts{
+  width: 500px;
+  min-width: 400px;
+  max-width: 400px;
+  height: 30px;
+  font-family: $font_fam;
+  font-size: $font_size;
+}
+
+#file_link{
+  font-size: $font_size;
+  font-family: $font_fam;
+}
+
+#body_input_posts{
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  height: 200px;
+  font-family: $font_fam;
+  font-size: $font_size;
 }
