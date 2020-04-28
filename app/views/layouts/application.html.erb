@@ -12,18 +12,23 @@
     <header>
       <table id = "header_table">
         <tr>
-          <td width = "240px">
-            <center>
-              <% if current_user.present? %>
+          <% if current_user.present? %>
+              <td width = "20%">
+                <center>
                 <%= link_to current_user do %>
                   <% @link = current_user.avatar.url(:thumb) %>
+                  <%if @link %>
                     <div id = "avatar_image" style = "background: url(<%= @link %>)" >
                     </div>
+                  <% else %>
+                    <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </center>
-          </td>
-          <td>
+              </center>
+            </td>
+          <% end %>
+          <td width = "60%">
             <% if current_user.present? %>
               <p id = "popper_logo"><%= link_to 'Popper', root_path, id: "popper_logo"%></p>
             <% else %>
@@ -31,14 +36,14 @@
             <% end %>
           </td>
           <% if current_user.present? %>
-            <td width = "120px">
+            <td width = "10%">
                 <% if @var != 1 %>
                   <%= button_to 'Recents', posts_path, :method => :get, id: "header_function_button" %>
                 <% else %>
                   <%= button_to 'Explore', explore_path, :method => :get, id: "header_function_button" %>
                 <% end %>
             </td>
-            <td width = "120px">
+            <td width = "10%">
               <%= button_to 'Create Post', new_post_path, :method => :get, id: "header_function_button" %>
             </td>
           <% end %>

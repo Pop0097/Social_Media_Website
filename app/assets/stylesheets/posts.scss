@@ -17,25 +17,6 @@ $margin_size_large: 10%;
 $margin_size_small: 5%;
 
 //for both Posts/index.html.erb and Posts/explore.html.erb
-#recents_article{
-  width: 600px;
-  border: $border;
-  border-radius: 20px;
-  margin-top: $margin_size_small;
-  margin-bottom: $margin_size_small;
-  padding: 20px;
-}
-
-#recents_title{
-  font-size: 40px;
-}
-
-#recents_table{
-  width: 500px;
-  border-top: $border;
-  padding: 10px;
-}
-
 #avatar_image{
   width: 50px;
   height: 50px;

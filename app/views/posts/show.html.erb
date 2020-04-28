@@ -11,21 +11,39 @@
     <% end %>
     <table id = "display_table">
       <tr>
-        <td width = "75">
-          <h3 style = "text-align:left;font-size:20px;"><%= link_to avatar_for(@post.user, size: 50), @post.user %> </h3>
+        <td width = "60">
+          <%= link_to @post.user do %>
+            <% @link = @post.user.avatar.url(:thumb) %>
+            <%if @link %>
+              <div id = "avatar_image" style = "background: url(<%= @link %>)" >
+              </div>
+            <% else %>
+              <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
+              </div>
+            <% end %>
+          <% end %>
         </td>
         <td>
           <h3 style = "text-align:left;font-size:20px;"> <%= @post.user.username %>: <%= @post.title %> </h3>
           <p style = "text-align:left"><%= @post.created_at.strftime("%B %d, 20%y") %></p>
         </td>
       </tr>
+      <tr>
+        <td colspan = "2">
+          <center>
+            <% if @post.post_file? %>
+              <%= post_file_for(@post) %><br>
+            <% end %>
+          </center>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p style = "text-align:left;font-size:16px;"> <%= @post.body %> </p>
+        </td>
+      </tr>
     </table>
-    <center>
-      <% if @post.post_file? %>
-        <%= post_file_for(@post) %><br>
-      <% end %>
-    </center>
-    <p style = "text-align:left;font-size:16px;"> <%= @post.body %> </p>
+
     <p style = "text-align:left">
       <!-- determines if user has already liked the post and creates a different button depending on the circumstance -->
       <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>

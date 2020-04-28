@@ -6,8 +6,7 @@
       <!-- form used to create posts: calls _postCreateForm.html.erb -->
       <%= render 'posts/postCreateForm' %>
 
-<%= link_to 'Cancel', posts_path %>
-      <%= link_to 'Cancel', posts_path, id: "cancel_link" %>
+      <%= link_to 'Cancel', :back, id: "cancel_link" %>
     </div>
   </article>
 </center>

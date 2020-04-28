@@ -1,65 +1,74 @@
-<h2>Edit Account</h2>
+<center>
+  <article id = "signup_article">
+    <p id = "recents_title" >Edit Account</p>
+    <div id = "sign_up_main">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true}) do |form| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= form.hidden_field :email, value: current_user.email %>
+          <%= form.hidden_field :username, value: current_user.username %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true}) do |form| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          Avatar<br>
+          <%= form.file_field :avatar %>
+        </div>
 
-  <%= form.hidden_field :email, value: current_user.email %>
-  <%= form.hidden_field :username, value: current_user.username %>
+        <div class="field">
+          <%= form.label :name, id: "registration_label" %><br>
+          <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: @user.name,id: "registration_field" %>
+        </div>
 
-  <h3>Your information:</h3>
-  Avatar<br>
-  <br>
-  <%= form.file_field :avatar %>
-  <p></p>
+        <div class="field">
+          <%= form.label :birth_month, id: "registration_label" %><br>
+          <div>
+            <%= form.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
+          </div>
+        </div>
 
-  <%= form.label :name %>
-  <p>
-    <%= form.text_field :name, autofocus: true, placeholder: @user.name %>
-  </p>
-  <%= form.label :birth_month %>
-  <p>
+        <div class="field">
+          <%= form.label :birth_year, id: "registration_label" %><br>
+          <%= form.number_field :birth_year, placeholder: @user.birth_year, id: "registration_field" %>
+        </div>
 
-    <%= form.select :birth_month,[[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
-  </p>
-  <%= form.label :birth_year %>
-  <p>
-    <%= form.number_field :birth_year, placeholder: @user.birth_year %>
-  </p>
-  <%= form.label :sex %>
-  <p>
-    <%= form.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']]  %>
-  </p>
+        <div class="field">
+          <%= form.label :sex, id: "registration_label" %><br>
+          <div>
+            <center>
+              <%= form.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
+            </center>
+          </div>
+        </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        <h3> Change your password: </h3>
+        <i>(leave blank if you don't want to change it)</i><br>
 
-  <h3> Change your password: </h3>
-  <i>(leave blank if you don't want to change it)</i><br>
+        <div class="field">
+          <%= form.label :password %><br>
+          <%= form.password_field :password, autocomplete: "new-password", id: "registration_field" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
 
-  <div class="field">
-    <%= form.label :password %><br>
-    <%= form.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+        <div class="field">
+          <%= form.label :password_confirmation %><br />
+          <%= form.password_field :password_confirmation, autocomplete: "new-password", id: "registration_field" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <h5>Enter your current password to confirm your changes </h5>
+        <div class="field">
+          <%= form.label :current_password %><br>
+          <%= form.password_field :current_password, autocomplete: "current-password", id: "registration_field" %>
+        </div>
 
-  <h5>Enter your current password to confirm your changes </h5>
-  <div class="field">
-    <%= form.label :current_password %><br>
-    <%= form.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Update" %>
-  </div>
-<% end %>
-
-<%= link_to "Back", :back %>
+        <div class="actions">
+          <p></p>
+          <%= form.submit "Update", id: "registration_button" %><br><br>
+          <%= link_to "Cancel", :back, id: "cancel_link" %>
+        </div>
+      <% end %>
+    </div>
+  </article>
+</center>

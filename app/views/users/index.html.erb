@@ -8,30 +8,40 @@
 
     <table id = "recents_table">
       <tr>
-        <td colspan = "2" width = "100">
+        <td colspan = "2" width = "250">
           <center>
             <strong>Username:</strong>
           </center>
         </td>
-        <td width = "150">
+        <td width = "140">
           <center>
             <strong>Followers:</strong>
           </center>
         </td>
-        <td width = "150">
+        <td width = "140">
           <center>
             <strong>Following:</strong>
           </center>
         </td>
       </tr>
     </table>
+
     <% @users.each do |user| %>
       <table id = "recents_table">
         <tr>
-          <td width = "50">
-            <%= link_to avatar_for(user, size: 35), user %>
+          <td width = "60">
+            <%= link_to user do %>
+              <% @link = user.avatar.url(:thumb) %>
+              <%if @link %>
+                <div id = "avatar_image" style = "background: url(<%= @link %>)" >
+                </div>
+              <% else %>
+                <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
+                </div>
+              <% end %>
+            <% end %>
           </td>
-          <td width = "150">
+          <td width = "130">
             <%= link_to user.username, user, id: "user_link"%>
           </td>
           <td width = "150">

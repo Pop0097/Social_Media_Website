@@ -29,3 +29,22 @@ $margin_size_small: 5%;
   font-size: $font_size;
   color: black;
 }
+
+//for Users/edit.html.erb
+#edit_user_article{
+  margin-top: $margin_size_small;
+  margin-bottom: $margin_size_small;
+  width: 500px;
+  align-items: center;
+  text-align: center;
+  border: $border;
+  border-radius: 20px;
+  height: 750px;
+  padding: 20px;
+  background-color: $main_color;
+}
+
+#edit_user_main{
+  height: 680px;
+  overflow: auto;
+}

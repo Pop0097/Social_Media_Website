@@ -1,18 +1,62 @@
 <!-- Displays all the people that the user follows -->
+<center>
+  <article id = "recents_article">
+    <p style = "text-align:left">
+      <%= link_to 'Back', @user, id: "back_link" %>
+    </p>
 
-<%= link_to 'Back', @user %>
+    <p id = "recents_title"> <%= @user.username %> is Following </p>
 
-<h3> <%= @user.username %> is Following </h3>
+    <table id = "recents_table">
+      <tr>
+        <td colspan = "2" width = "250">
+          <center>
+            <strong>Username:</strong>
+          </center>
+        </td>
+        <td width = "140">
+          <center>
+            <strong>Followers:</strong>
+          </center>
+        </td>
+        <td width = "140">
+          <center>
+            <strong>Following:</strong>
+          </center>
+        </td>
+      </tr>
+    </table>
 
-<table>
-  <% @following.reverse_each do |following| %>
-    <tr>
-      <td>
-        <%= link_to avatar_for(following, size: 35), following %>
-      </td>
-      <td>
-        <%= following.username %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+    <% @following.reverse_each do |following| %>
+      <table id = "recents_table">
+        <tr>
+          <td width = "60">
+            <%= link_to following do %>
+              <% @link = following.avatar.url(:thumb) %>
+              <%if @link %>
+                <div id = "avatar_image" style = "background: url(<%= @link %>)" >
+                </div>
+              <% else %>
+                <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
+                </div>
+              <% end %>
+            <% end %>
+          </td>
+          <td width = "130">
+            <%= link_to following.username, following, id: "user_link"%>
+          </td>
+          <td width = "150">
+            <center>
+              <%= following.followers.count %>
+            </center>
+          </td>
+          <td width = "150">
+            <center>
+              <%= following.following.count %>
+            </center>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </article>
+</center>

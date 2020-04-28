@@ -31,7 +31,7 @@ $margin_size_small: 5%;
 //General
 html, body{
   min-height:900px;
-  min-width: 800px;
+  min-width: 1200px;
   font-family: $font_fam;
   height: 100%;
 }
@@ -157,6 +157,25 @@ header{
   background-color: black;
 }
 
+#recents_article{
+  width: 600px;
+  border: $border;
+  border-radius: 20px;
+  margin-top: $margin_size_small;
+  margin-bottom: $margin_size_small;
+  padding: 20px;
+}
+
+#recents_title{
+  font-size: 40px;
+}
+
+#recents_table{
+  width: 500px;
+  border-top: $border;
+  padding: 10px;
+}
+
 //for devise/sessions/new.html.erb
 #login_main{
   margin-top: $margin_size_small;
@@ -169,7 +188,7 @@ header{
   text-align: center;
   border: $border;
   border-radius: 20px;
-  height: 320px;
+  height: 380px;
   padding: 20px;
   background-color: $main_color;
 }
@@ -219,7 +238,7 @@ header{
   text-align: center;
   border: $border;
   border-radius: 20px;
-  height: 750px;
+  height: 800px;
   padding: 20px;
   background-color: $main_color;
 }
