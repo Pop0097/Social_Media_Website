@@ -38,15 +38,15 @@
             </td>
             <% if current_user.present? %>
               <td width = "10%">
-                  <% if @page_before_viewing_post == 0 %>
-                    <center>
-                      <%= button_to 'Recents', posts_path, :method => :get, id: "header_function_button" %>
-                    </center>
-                  <% else %>
-                    <center>
-                      <%= button_to 'Explore', explore_path, :method => :get, id: "header_function_button" %>
-                    </center>
-                  <% end %>
+                <% if $page_before_viewing_post != 1 %>
+                  <center>
+                    <%= button_to 'Recents', posts_path, :method => :get, id: "header_function_button" %>
+                  </center>
+                <% else %>
+                  <center>
+                    <%= button_to 'Explore', explore_path, :method => :get, id: "header_function_button" %>
+                  </center>
+                <% end %>
               </td>
               <td width = "10%">
                 <%= button_to 'Create Post', new_post_path, :method => :get, id: "header_function_button" %>

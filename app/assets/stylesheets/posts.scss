@@ -21,7 +21,6 @@ $margin_size_small: 5%;
   width: 50px;
   height: 50px;
   border-radius: 25px;
-
 }
 
 #post_title_link{
@@ -38,6 +37,13 @@ $margin_size_small: 5%;
 
 #horizontal_ruling{
   color: $main_color;
+}
+
+img.resize{
+  max-width: 500px;
+  max-height: 500px;
+  width: 80%;
+  height: 80%;
 }
 
 //Also applies to Users/Search.html.erb

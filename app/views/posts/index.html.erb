@@ -30,7 +30,10 @@
                 <tr>
                   <td colspan = "3" width = "900">
                     <center>
-                      <%= link_to post_file_for(post), post_path(post), id: "post_link" %>
+                      <% @link = post.post_file.url(:thumb) %>
+                      <%= link_to post_path(post) do %>
+                        <img class = "resize" src = "<%= @link %>"  %>
+                      <% end %>
                     </center>
                   </td>
                 </tr>
