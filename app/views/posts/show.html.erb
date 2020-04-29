@@ -1,18 +1,24 @@
 <center>
   <article id = "recents_article">
-    <% if $page_before_viewing_post == 0 %>
-      <p style="text-align:left">
-        <%= link_to 'Back', explore_path, id: "back_link" %>
-      </p>
-    <% elsif $page_before_viewing_post == 1 %>
-      <p style="text-align:left">
-        <%= link_to 'Back', posts_path, id: "back_link" %>
-      </p>
-    <% elsif $page_before_viewing_post == 2 %>
-      <p style="text-align:left">
-        <%= link_to 'Back', @post.user, id: "back_link" %>
-      </p>
-    <% end %>
+    <table id = "function_link_table">
+      <tr>
+        <td>
+          <% if $page_before_viewing_post == 0 %>
+            <p style="text-align:left">
+              <%= link_to 'Back', explore_path, id: "back_link" %>
+            </p>
+          <% elsif $page_before_viewing_post == 1 %>
+            <p style="text-align:left">
+              <%= link_to 'Back', posts_path, id: "back_link" %>
+            </p>
+          <% elsif $page_before_viewing_post == 2 %>
+            <p style="text-align:left">
+              <%= link_to 'Back', @post.user, id: "back_link" %>
+            </p>
+          <% end %>
+        </td>
+      </tr>
+    </table>
 
     <table id = "display_table">
       <tr>
@@ -20,24 +26,25 @@
           <%= link_to @post.user do %>
             <% @link = @post.user.avatar.url(:thumb) %>
             <%if @link %>
-              <div id = "avatar_image" style = "background: url(<%= @link %>)" >
-              </div>
+              <img class = "avatar_image_small" src = "<%= @link %>">
             <% else %>
-              <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
-              </div>
+              <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
             <% end %>
           <% end %>
         </td>
         <td>
-          <h3 style = "text-align:left;font-size:20px;"> <%= @post.user.username %>: <%= @post.title %> </h3>
-          <p style = "text-align:left"><%= @post.created_at.strftime("%B %d, 20%y") %></p>
+          <p style = "text-align:left;font-size:20px;">
+            <strong> <%= @post.user.username %>: <%= @post.title %> </strong><br>
+            <%= @post.created_at.strftime("%B %d, 20%y") %>
+          </p>
         </td>
       </tr>
       <tr>
         <td colspan = "2">
           <center>
             <% if @post.post_file? %>
-              <%= post_file_for(@post) %><br>
+              <% @link = @post.post_file.url(:thumb) %>
+              <img class = "post_image" src = "<%= @link %>"  %><br>
             <% end %>
           </center>
         </td>

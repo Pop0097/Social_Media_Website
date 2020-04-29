@@ -41,11 +41,9 @@
 
     <% @link = @user.avatar.url(:thumb) %>
     <%if @link %>
-      <div id = "avatar_image_large" style = "background: url(<%= @link %>)" >
-      </div>
+      <img class = "avatar_image_large" src = "<%= @link %>">
     <% else %>
-      <div id = "avatar_image_large" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
-      </div>
+      <img class = "avatar_image_large" src = "<%= asset_path 'default_avatar.jpg' %>">
     <% end %>
 
     <p>
@@ -77,7 +75,10 @@
           <tr>
             <td width = "900">
               <center>
-                <%= link_to post_file_for(post), post_path(post), id: "post_link" %>
+                <% @link = post.post_file.url(:thumb) %>
+                <%= link_to post_path(post) do %>
+                  <img class = "post_image" src = "<%= @link %>"  %>
+                <% end %>
               </center>
             </td>
           </tr>
@@ -96,7 +97,8 @@
       </table>
       <% end %>
     <!-- provides link that allows users to move between pages -->
-    <%= will_paginate @posts %>
-
+    <div id = "pagination">
+      <%= will_paginate @posts %>
+    <div>
   </article>
 </center>

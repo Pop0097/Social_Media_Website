@@ -1,8 +1,14 @@
 <center>
   <article id = "recents_article">
-    <p style="text-align:left">
-      <%= link_to 'Return to Explore', explore_path, id: "back_link" %>
-    </p>
+    <table id = "function_link_table">
+      <tr>
+        <td>
+          <p style = "text-align:left">
+            <%= link_to 'Return to Explore', explore_path, id: "back_link" %>
+          </p>
+        </td>
+      </tr>
+    </table>
 
     <h2> All Users </h2>
 
@@ -33,11 +39,9 @@
             <%= link_to user do %>
               <% @link = user.avatar.url(:thumb) %>
               <%if @link %>
-                <div id = "avatar_image" style = "background: url(<%= @link %>)" >
-                </div>
+                <img class = "avatar_image_small" src = "<%= @link %>">
               <% else %>
-                <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
-                </div>
+                <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
               <% end %>
             <% end %>
           </td>
@@ -58,6 +62,8 @@
       </table>
     <% end %>
     <!-- provides link that allows users to move between pages -->
-    <%= will_paginate @users %>
+    <div id = "pagination">
+      <%= will_paginate @users %>
+    </div>
   </article>
 </center>

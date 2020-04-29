@@ -2,68 +2,80 @@
   <article id = "signup_article">
     <p id = "recents_title" >Sign up</p>
     <div id = "sign_up_main">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <strong><%= form.label :name, id: "registration_label" %><br></strong>
+          <%= form.text_field :name, autofocus: true, autocomplete: "name", id: "registration_field" %>
+        </div>
 
-          <div class="field">
-            <%= f.label :name, id: "registration_label" %><br>
-            <%= f.text_field :name, autofocus: true, autocomplete: "name", id: "registration_field" %>
-          </div>
+        <br>
 
-          <div class="field">
-            <%= f.label :username, id: "registration_label" %><br>
-            <%= f.text_field :username, autocomplete: "username", id: "registration_field" %>
-          </div>
+        <div class="field">
+          <strong> <%= form.label :username, id: "registration_label" %><br></strong>
+          <%= form.text_field :username, autocomplete: "username", id: "registration_field" %>
+        </div>
 
-          <div class="field">
-            <%= f.label :email, id: "registration_label" %><br>
-            <%= f.email_field :email, autocomplete: "email", id: "registration_field" %>
-          </div>
+        <br>
 
-          <div class="field">
-            <%= f.label :birth_month, id: "registration_label" %><br>
-            <div>
-              <%= f.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
-            </div>
-          </div>
+        <div class="field">
+          <strong><%= form.label :email, id: "registration_label" %><br></strong>
+          <%= form.email_field :email, autocomplete: "email", id: "registration_field" %>
+        </div>
 
-          <div class="field">
-            <%= f.label :birth_year, id: "registration_label" %><br>
-            <%= f.number_field :birth_year, id: "registration_field" %>
-          </div>
+        <br>
 
-          <div class="field">
-            <%= f.label :sex, id: "registration_label" %><br>
-            <div>
-              <center>
-                <%= f.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
-              </center>
-            </div>
+        <div class="field">
+          <strong><%= form.label :birth_month, id: "registration_label" %><br></strong>
+          <div>
+            <%= form.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
           </div>
+        </div>
 
-          <div class="field">
-            <%= f.label :password, id: "registration_label" %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br>
-            <%= f.password_field :password, autocomplete: "new-password", id: "registration_field" %>
-          </div>
+        <br>
 
-          <div class="field">
-            <%= f.label :password_confirmation, id: "registration_label" %><br>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "registration_field" %>
-          </div>
+        <div class="field">
+          <strong><%= form.label :birth_year, id: "registration_label" %><br></strong>
+          <%= form.number_field :birth_year, id: "registration_field" %>
+        </div>
 
-          <div class="actions">
-            <p></p>
-            <p> You must be at least 14 years old to use Popper. My signing up, you are confirming that you are over 14 years old.</p>
-            <p></p>
-            <%= f.submit "Sign up", id: "registration_button"%>
-            <p></p>
-            <%= link_to "Cancel", root_path, id: "cancel_link" %>
+        <br>
+
+        <div class="field">
+          <strong><%= form.label :sex, id: "registration_label" %><br></strong>
+          <div>
+            <center>
+              <%= form.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
+            </center>
           </div>
-        <% end %>
-      </div>
-    <%= render "devise/shared/links" %>
+        </div>
+
+        <br>
+
+        <div class="field">
+          <strong><%= form.label :password, id: "registration_label" %></strong>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br>
+          <%= form.password_field :password, autocomplete: "new-password", id: "registration_field" %>
+        </div>
+
+        <br>
+
+        <div class="field">
+          <strong><%= form.label :password_confirmation, id: "registration_label" %><br></strong>
+          <%= form.password_field :password_confirmation, autocomplete: "new-password", id: "registration_field" %>
+        </div>
+
+        <div class="actions">
+          <p></p>
+          <p> You must be at least 14 years old to use Popper. By signing up, you are confirming that you are over 14 years old.</p>
+          <p></p>
+          <%= form.submit "Sign up", id: "registration_button"%>
+          <p></p>
+          <%= link_to "Cancel", root_path, id: "cancel_link" %>
+        </div>
+      <% end %>
+    </div>
   </article>
 </center>

@@ -16,16 +16,14 @@
             <% if current_user.present? %>
                 <td width = "20%">
                   <center>
-                  <%= link_to current_user do %>
-                    <% @link = current_user.avatar.url(:thumb) %>
-                    <%if @link %>
-                      <div id = "avatar_image" style = "background: url(<%= @link %>)" >
-                      </div>
-                    <% else %>
-                      <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
-                      </div>
+                    <%= link_to current_user do %>
+                      <% @link = current_user.avatar.url(:thumb) %>
+                      <%if @link %>
+                        <img class = "avatar_image_small" src = "<%= @link %>">
+                      <% else %>
+                        <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
+                      <% end %>
                     <% end %>
-                  <% end %>
                 </center>
               </td>
             <% end %>

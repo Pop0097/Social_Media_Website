@@ -9,30 +9,41 @@
           <%= form.hidden_field :username, value: current_user.username %>
         </div>
 
+        <br>
+
         <div class="field">
-          Avatar<br>
+          <strong>Avatar</strong><br>
+          <i>Square images work best</i><br>
           <%= form.file_field :avatar %>
         </div>
 
-        <div class="field">
-          <%= form.label :name, id: "registration_label" %><br>
-          <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: @user.name,id: "registration_field" %>
-        </div>
+        <br>
 
         <div class="field">
-          <%= form.label :birth_month, id: "registration_label" %><br>
+          <strong><%= form.label :name, id: "registration_label" %><br></strong>
+          <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: @user.name, id: "registration_field" %>
+        </div>
+
+        <br>
+
+        <div class="field">
+          <strong><%= form.label :birth_month, id: "registration_label" %><br></strong>
           <div>
             <%= form.select :birth_month, [[], ['Jan', 'Jan'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Apr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Aug'], ['Sept', 'Sept'], ['Oct', 'Oct'], ['Nov', 'Nov'], ['Dec', 'Dec']] %>
           </div>
         </div>
 
+        <br>
+
         <div class="field">
-          <%= form.label :birth_year, id: "registration_label" %><br>
+          <strong><%= form.label :birth_year, id: "registration_label" %><br></strong>
           <%= form.number_field :birth_year, placeholder: @user.birth_year, id: "registration_field" %>
         </div>
 
+        <br>
+
         <div class="field">
-          <%= form.label :sex, id: "registration_label" %><br>
+          <strong><%= form.label :sex, id: "registration_label" %><br></strong>
           <div>
             <center>
               <%= form.select :sex, [[], ['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']] %>
@@ -40,11 +51,11 @@
           </div>
         </div>
 
-        <h3> Change your password: </h3>
+        <strong> Change your password: </strong><br>
         <i>(leave blank if you don't want to change it)</i><br>
 
         <div class="field">
-          <%= form.label :password %><br>
+          <strong><%= form.label :password %><br></strong>
           <%= form.password_field :password, autocomplete: "new-password", id: "registration_field" %>
           <% if @minimum_password_length %>
             <br />
@@ -52,12 +63,16 @@
           <% end %>
         </div>
 
+        <br>
+
         <div class="field">
-          <%= form.label :password_confirmation %><br />
+          <strong><%= form.label :password_confirmation %><br /></strong>
           <%= form.password_field :password_confirmation, autocomplete: "new-password", id: "registration_field" %>
         </div>
 
-        <h5>Enter your current password to confirm your changes </h5>
+        <br>
+
+        <strong> Enter your current password to confirm your changes </strong>
         <div class="field">
           <%= form.label :current_password %><br>
           <%= form.password_field :current_password, autocomplete: "current-password", id: "registration_field" %>

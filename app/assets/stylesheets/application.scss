@@ -149,18 +149,21 @@ header{
   border-radius: $button_border_radius;
 }
 
-#avatar_image{
+img.avatar_image_small{
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  border: 1px black;
 }
 
-#avatar_image_large{
+img.avatar_image_large{
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  border: 1px black;
+}
+
+#function_link_table{
+  width: 500px;
+  padding: 10px;
 }
 
 #recents_article{
@@ -180,6 +183,53 @@ header{
   width: 500px;
   border-top: $border;
   padding: 10px;
+}
+
+//used to style will_paginate links. It is a modified version of the Digg-style pagination
+#pagination{
+  max-width: 500px;
+  max-height: 50px;
+}
+
+.pagination {
+  padding: 3px;
+  margin: 3px;
+  max-width: 400px;
+  max-height: 40px;
+}
+
+.pagination a {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #000000;
+  background-color: $main_color;
+  text-decoration: none;
+  color: #000000;
+  border-radius: 5px;
+}
+
+.pagination a:hover, .pagination a:active {
+  border: 1px solid #000099;
+  background-color: $positive_function_color;
+}
+
+.pagination span.current {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #000000;
+  background-color: $main_color;
+  text-decoration: none;
+  color: #000000;
+}
+
+.pagination span.disabled {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #000000;
+  background-color: $neutral_function_color;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000000;
 }
 
 //for devise/sessions/new.html.erb
@@ -232,7 +282,7 @@ header{
 
 //for devise/registrations/new.html.erb
 #sign_up_main{
-  height: 680px;
+  height: 730px;
   overflow: auto;
 }
 
@@ -244,7 +294,7 @@ header{
   text-align: center;
   border: $border;
   border-radius: 20px;
-  height: 800px;
+  height: 850px;
   padding: 20px;
   background-color: $main_color;
 }

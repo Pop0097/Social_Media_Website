@@ -1,9 +1,15 @@
 <!-- Displays all the people that the user follows -->
 <center>
   <article id = "recents_article">
-    <p style = "text-align:left">
-      <%= link_to 'Back', @user, id: "back_link" %>
-    </p>
+    <table id = "function_link_table">
+      <tr>
+        <td>
+          <p style = "text-align:left">
+            <%= link_to 'Back', @user, id: "back_link" %>
+          </p>
+        </td>
+      </tr>
+    </table>
 
     <p id = "recents_title"> <%= @user.username %> is Following </p>
 
@@ -34,11 +40,9 @@
             <%= link_to following do %>
               <% @link = following.avatar.url(:thumb) %>
               <%if @link %>
-                <div id = "avatar_image" style = "background: url(<%= @link %>)" >
-                </div>
+                <img class = "avatar_image_small" src = "<%= @link %>">
               <% else %>
-                <div id = "avatar_image" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
-                </div>
+                <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
               <% end %>
             <% end %>
           </td>

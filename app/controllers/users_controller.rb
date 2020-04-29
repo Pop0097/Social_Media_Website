@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index, :search] #sets @user before calling other methods
 
   def index
-    @users = User.paginate(:page => params[:page], per_page: 30) #paginates the results so only 30 users appear on the page at a time
+    @users = User.paginate(:page => params[:page], per_page: 50) #paginates the results so only 30 users appear on the page at a time
     $page_before_viewing_user = 5
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where("username LIKE ?", "%" + params[:q] + "%").paginate(:page => params[:page], per_page: 30)  #finds users that have string "q" in their username. Also, paginates the results so only 30 users appear on the page at a time
+    @users = User.where("username LIKE ?", "%" + params[:q] + "%").paginate(:page => params[:page], per_page: 50)  #finds users that have string "q" in their username. Also, paginates the results so only 30 users appear on the page at a time
     @search = params[:q]
     $page_before_viewing_user = 0
   end

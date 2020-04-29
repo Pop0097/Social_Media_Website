@@ -6,12 +6,14 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <%= f.label :login, id: "registration_label" %><br />
+          <strong><%= f.label :login, id: "registration_label" %><br /></strong>
           <%= f.text_field :login, autofocus: true, id: "registration_field" %>
         </div>
-        <p></p>
+
+        <br>
+        
         <div class="field">
-          <%= f.label :password %><br>
+          <strong><%= f.label :password %><br></strong>
           <%= f.password_field :password, autocomplete: "current-password", id: "registration_field" %>
         </div>
 
