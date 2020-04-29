@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   #validates User parameters
   validates :name, presence: true
-  validates :username, presence: true, length: {maximum: 8}
+  validates :username, presence: true, length: {maximum: 15}
   validates :birth_month, presence: true
   validates :birth_year, presence: true, numericality: {less_than_or_equal_to: 2006, greater_than: 1900}
   validates :sex, presence: true

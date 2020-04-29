@@ -31,7 +31,7 @@ $margin_size_small: 5%;
 //General
 html, body{
   min-height:900px;
-  min-width: 1200px;
+  min-width: 1000px;
   font-family: $font_fam;
   height: 100%;
 }
@@ -154,7 +154,13 @@ header{
   height: 50px;
   border-radius: 25px;
   border: 1px black;
-  background-color: black;
+}
+
+#avatar_image_large{
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 1px black;
 }
 
 #recents_article{

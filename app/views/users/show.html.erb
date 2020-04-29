@@ -1,89 +1,102 @@
-<aside>
-  <!-- if statement added so other users cannot edit or delete other accounts -->
-  <%= link_to 'Back', :back, id: "function_button" %><br>
-  <% if @user.id == current_user.id %>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete, id: "logout_button" %><br>
-    <%= link_to 'Edit Account', edit_user_registration_path, id: "function_button" %><br>
-    <%= link_to 'Delete Account', registration_path(current_user), id: "delete_account_button", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %>
-  <% end %>
-</aside>
-
-<h2> <%= @user.username %> </h2>
-<%= avatar_for(@user) %>
-<p>
-  <%= link_to 'Followers:', followers_user_path(@user) %> <%= @user.followers.count %> | <%= link_to 'Following:', following_user_path(@user) %> <%= @user.following.count %>
-</p>
-<%= render 'followButton' %>
-
-<!-- table displays information of the user -->
-<table id = "profile_table">
-  <p>
-  <tr>
-    <td>
-      <strong>Email: </strong>
-    </td>
-    <td>
-      <%= @user.email %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <strong>Name: </strong>
-    </td>
-    <td>
-      <%= @user.name %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Birth Month: </strong>
-    </td>
-    <td>
-      <%= @user.birth_month %>, <%= @user.birth_year %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Sex: </strong>
-    </td>
-    <td>
-      <%= @user.sex %>
-    </td>
-  </tr>
-  </p>
-</table>
-
-<hbr>
-
-<!-- table displays the user's posts -->
-<h2> <%= @user.username %>'s Posts </h2>
-<table>
-  <% @posts.reverse_each do |post| %>
-    <tr>
-        <td>
-          <%= link_to post.title, post_path(post) %><br>
-          <%= pluralize(post.likes.count, "Like") %>
-        </td>
-        <% if post.post_file? %>
-          <tr>
-            <td colspan = "2" width = "900">
-              <%= post_file_for(post) %>
-            </td>
-          </tr>
-        <% end %>
+<center>
+  <article id = "recents_article">
+    <!-- if statement added so other users cannot edit or delete other accounts -->
+    <table id = "function_link_table">
       <tr>
-        <td colspan = "2" width = "900">
-          <p id = "recents_display_body">
-            <% if post.body.length >= 200 %>
-              <%= post.body[0..199] %>... <i>(Click the title to see more)</i>
-            <% else %>
-              <%= post.body[0..199] %>
+        <td width = "33%">
+          <p style="text-align:left">
+            <% if $page_before_viewing_user == 0 %>
+              <%= link_to 'Back', explore_path, id: "back_link" %>
+            <% elsif $page_before_viewing_user == 1 %>
+              <%= link_to 'Back', posts_path, id: "back_link" %>
+            <% elsif $page_before_viewing_user == 2 %>
+              <%= link_to 'Back', post_path($previous_post), id: "back_link" %>
+            <% elsif $page_before_viewing_user == 3 %>
+              <%= link_to 'Back', followers_user_path($previous_user), id: "back_link" %>
+            <% elsif $page_before_viewing_user == 4 %>
+              <%= link_to 'Back', following_user_path($previous_user), id: "back_link" %>
+            <% elsif $page_before_viewing_user == 5 %>
+              <%= link_to 'Back', users_path, id: "back_link" %>
             <% end %>
           </p>
         </td>
+        <td width = "33%">
+          <% if @user.id == current_user.id %>
+            <center>
+              <%= link_to 'Edit Account', edit_user_registration_path, id: "edit_user_button" %>
+            </center>
+          <% end %>
+        </td>
+        <td width = "33%">
+          <% if @user.id == current_user.id %>
+            <center>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, id: "logout_button" %>
+            </center>
+          <% end %>
+        </td>
       </tr>
-  <% end %>
-</table>
+    </table>
 
-<!-- provides link that allows users to move between pages -->
-<%= will_paginate @posts %>
+    <p id = "recents_title"> <%= @user.username %> </p>
+
+    <% @link = @user.avatar.url(:thumb) %>
+    <%if @link %>
+      <div id = "avatar_image_large" style = "background: url(<%= @link %>)" >
+      </div>
+    <% else %>
+      <div id = "avatar_image_large" style = "background: url(<%= asset_path 'default_avatar.jpg' %>)">
+      </div>
+    <% end %>
+
+    <p>
+      <strong><%= @user.name %></strong> <br>
+      <%= @user.birth_month %>, <%= @user.birth_year %>
+    </p>
+
+    <p>
+      <%= link_to 'Followers:', followers_user_path(@user), id: "access_follow_info_link" %> <%= @user.followers.count %> | <%= link_to 'Following:', following_user_path(@user), id: "access_follow_info_link" %> <%= @user.following.count %>
+    </p>
+    <%= render 'followButton' %>
+
+    <hr>
+
+    <!-- table displays the user's posts -->
+    <h2>Posts </h2>
+
+      <% @posts.reverse_each do |post| %>
+      <table id = "recents_table">
+        <tr>
+          <td>
+            <center>
+              <%= link_to post.title, post_path(post), id: "post_title_link" %><br>
+              <%= pluralize(post.likes.count, "Like") %>
+            </center>
+          </td>
+        </tr>
+        <% if post.post_file? %>
+          <tr>
+            <td width = "900">
+              <center>
+                <%= link_to post_file_for(post), post_path(post), id: "post_link" %>
+              </center>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <td  width = "900">
+            <p id = "recents_display_body">
+              <% if post.body.length >= 200 %>
+                <%= link_to post.body[0..199], post_path(post), id: "post_link" %>... <i id = "post_link" > (Click the title to see more)</i>
+              <% else %>
+                <%= link_to post.body[0..199], post_path(post), id: "post_link" %>
+              <% end %>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    <!-- provides link that allows users to move between pages -->
+    <%= will_paginate @posts %>
+
+  </article>
+</center>

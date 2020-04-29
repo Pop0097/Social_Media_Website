@@ -30,7 +30,7 @@ $margin_size_small: 5%;
   color: black;
 }
 
-//for Users/edit.html.erb
+//for devise/registrations/edit.html.erb
 #edit_user_article{
   margin-top: $margin_size_small;
   margin-bottom: $margin_size_small;
@@ -39,12 +39,96 @@ $margin_size_small: 5%;
   text-align: center;
   border: $border;
   border-radius: 20px;
-  height: 750px;
+  height: 900px;
   padding: 20px;
   background-color: $main_color;
 }
 
 #edit_user_main{
-  height: 680px;
+  height: 750px;
   overflow: auto;
+}
+
+#delete_account_button{
+  background-color: $negative_function_color;
+  border: none;
+  width: 370px;
+  height: 20px;
+  padding: $button_margins;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+//for Users/show.html.erb
+#access_follow_info_link{
+  text-decoration: none;
+  font-size: $font_size;
+  font-family: $font_fam;
+  color: black;
+}
+
+#function_link_table{
+  width: 500px;
+  padding: 10px;
+}
+
+#edit_user_button{
+  background-color: $neutral_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  width: 90px;
+  height: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+#logout_button{
+  background-color: $negative_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  width: 90px;
+  height: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+//for Users/_followButton.html.erb
+#follow_button_negative{
+  background-color: $negative_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  width: 90px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
+}
+
+#follow_button_positive{
+  background-color: $positive_function_color;
+  border: none;
+  color: white;
+  padding: $button_margins;
+  width: 90px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $button_font_size;
+  border-radius: $button_border_radius;
 }

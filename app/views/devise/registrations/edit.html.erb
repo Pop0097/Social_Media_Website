@@ -1,7 +1,7 @@
 <center>
-  <article id = "signup_article">
+  <article id = "edit_user_article">
     <p id = "recents_title" >Edit Account</p>
-    <div id = "sign_up_main">
+    <div id = "edit_user_main">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true}) do |form| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field">
@@ -66,7 +66,8 @@
         <div class="actions">
           <p></p>
           <%= form.submit "Update", id: "registration_button" %><br><br>
-          <%= link_to "Cancel", :back, id: "cancel_link" %>
+          <%= link_to 'Delete Account', registration_path(current_user), id: "delete_account_button", method: :delete, data: {confirm: 'Are you sure? You cannot reverse this decision'} %><br><br>
+          <%= link_to "Cancel", current_user, id: "cancel_link" %>
         </div>
       <% end %>
     </div>

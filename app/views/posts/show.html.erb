@@ -1,14 +1,19 @@
 <center>
   <article id = "recents_article">
-    <% if current_user.following?(@post.user) || current_user == @post.user %>
+    <% if $page_before_viewing_post == 0 %>
       <p style="text-align:left">
-        <%= link_to 'Recents', posts_path, id: "back_link" %>
+        <%= link_to 'Back', explore_path, id: "back_link" %>
       </p>
-    <% else %>
+    <% elsif $page_before_viewing_post == 1 %>
       <p style="text-align:left">
-        <%= link_to 'Explore', explore_path, id: "back_link" %>
+        <%= link_to 'Back', posts_path, id: "back_link" %>
+      </p>
+    <% elsif $page_before_viewing_post == 2 %>
+      <p style="text-align:left">
+        <%= link_to 'Back', @post.user, id: "back_link" %>
       </p>
     <% end %>
+
     <table id = "display_table">
       <tr>
         <td width = "60">
@@ -38,7 +43,7 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <td colspan = "2">
           <p style = "text-align:left;font-size:16px;"> <%= @post.body %> </p>
         </td>
       </tr>
