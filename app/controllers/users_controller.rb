@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.paginate(:page => params[:page], per_page: 20) #paginates the explore page so only 20 post are shown at a time
+    @posts = @user.posts.order(created_at: :desc).paginate(:page => params[:page], per_page: 20) #paginates the explore page so only 20 post are shown at a time
     if $page_before_viewing_user != 2
       $page_before_viewing_post = 2
     end

@@ -19,7 +19,7 @@
     <h2> All Posts </h2>
     <i>The posts displayed are from users you do not follow</i>
     <p></p>
-      <% @posts.reverse_each do |post| %>
+      <% @posts.each do |post| %>
         <!-- only displays posts from users the current user does not follow -->
         <% if post.user != current_user && !current_user.following?(post.user)  %>
         <table id = "recents_table">

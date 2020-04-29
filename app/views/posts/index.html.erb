@@ -4,7 +4,7 @@
     <p id = "recents_title"> Recents </p>
 
     <% if current_user.following.count != 0 %>
-        <% @posts.reverse_each do |post| %>
+        <% @posts.each do |post| %>
           <% if current_user.following?(post.user) || post.user == current_user %>
             <table id = "recents_table">
               <tr id = "top_row">
