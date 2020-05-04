@@ -1,8 +1,8 @@
 # README
 
-Popper is a social media platform that I developed during Spring 2020. I created this program to understand the logic behind social media platforms such as Instagram and Facebook. I used Ruby on Rails, HTML, and SCSS (superset of CSS) to develop the software.
+Popper is a social media platform that I developed during Spring 2020. I created this program to understand the logic behind other social media platforms such as Instagram and Facebook. I used Ruby on Rails, HTML, and SCSS (a superset of CSS) to develop the software.
 
-Popper brings forth many valuable features such as:
+Popper brings implements features such as:
 - Unique user accounts protected by a username/email and a password
 - Ability to share images
 - Ability to like and comment on posts
@@ -12,7 +12,7 @@ This version uses Ruby version 2.6.3 and Rails 6.0.2.2
 
 
 
-Deployment of software:
+# Deployment of software:
 You must have rails installed. To do so, follow Step 3.1 in the following website: https://guides.rubyonrails.org/v5.0/getting_started.html
 
 In addition to rails, you will need to have access to these gems:
