@@ -186,9 +186,10 @@ img.avatar_image_large{
 }
 
 //used to style will_paginate links. It is a modified version of the Digg-style pagination
-#pagination{
-  max-width: 500px;
+div.pagination{
+  max-width: 550px;
   max-height: 50px;
+  width: 100%;
 }
 
 .pagination {

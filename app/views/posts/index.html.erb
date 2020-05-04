@@ -4,58 +4,56 @@
     <p id = "recents_title"> Recents </p>
 
     <% if current_user.following.count != 0 %>
-        <% @posts.each do |post| %>
-          <% if current_user.following?(post.user) || post.user == current_user %>
-            <table id = "recents_table">
-              <tr id = "top_row">
-                <td width = "60">
-                  <%= link_to post.user do %>
-                    <% @link = post.user.avatar.url(:thumb) %>
-                    <%if @link %>
-                      <img class = "avatar_image_small" src = "<%= @link %>">
-                    <% else %>
-                      <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
-                    <% end %>
-                  <% end %>
-                </td>
-                <td colspan = "2">
-                  <%= link_to post.user.username, post_path(post), id: "post_title_link" %>:
-                  <%= link_to post.title, post_path(post), id: "post_title_link" %><br>
-                  <%= pluralize(post.likes.count, "Like") %>
-                </td>
-              </tr>
-              <% if post.post_file? %>
-                <tr>
-                  <td colspan = "3" width = "900">
-                    <center>
-                      <% @link = post.post_file.url(:thumb) %>
-                      <%= link_to post_path(post) do %>
-                        <img class = "post_image" src = "<%= @link %>"  %>
-                      <% end %>
-                    </center>
-                  </td>
-                </tr>
-              <% end %>
-              <tr>
-                <td colspan = "3" width = "900">
-                  <p id = "recents_display_body">
-                    <% if post.body.length >= 200 %>
-                      <%= link_to post.body[0..199], post_path(post), id: "post_link" %>... <i id = "post_link" > (Click the title to see more)</i>
-                    <% else %>
-                      <%= link_to post.body[0..199], post_path(post), id: "post_link" %>
-                    <% end %>
-                  </p>
-                </td>
-              </tr>
-            </table>
-          <% end %>
-        <% end %>
       <!-- provides link that allows users to move between pages -->
-      <div id = "pagination">
-        <%= will_paginate @posts%>
-      </div>
+      <%- @postarray.each do |post| %>
+        <table id = "recents_table">
+          <tr>
+            <td width = "60">
+              <%= link_to post.user do %>
+                <% @link = post.user.avatar.url(:thumb) %>
+                <%if @link %>
+                  <img class = "avatar_image_small" src = "<%= @link %>">
+                <% else %>
+                  <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
+                <% end %>
+              <% end %>
+            </td>
+            <td colspan = "2">
+              <%= link_to post.user.username, post_path(post), id: "post_title_link" %>:
+              <%= link_to post.title, post_path(post), id: "post_title_link" %><br>
+              <%= pluralize(post.likes.count, "Like") %>
+            </td>
+          </tr>
+          <% if post.post_file? %>
+            <tr>
+              <td colspan = "3" width = "900">
+                <center>
+                  <% @link = post.post_file.url(:thumb) %>
+                  <%= link_to post_path(post) do %>
+                    <img class = "post_image" src = "<%= @link %>"  %>
+                  <% end %>
+                </center>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td colspan = "3" width = "900">
+              <p id = "recents_display_body">
+                <% if post.body.length >= 200 %>
+                  <%= link_to post.body[0..199], post_path(post), id: "post_link" %>... <i id = "post_link" > (Click the title to see more)</i>
+                <% else %>
+                  <%= link_to post.body[0..199], post_path(post), id: "post_link" %>
+                <% end %>
+              </p>
+            </td>
+          </tr>
+        </table>
+      <% end %>
     <% else %>
       <p> Start following your friends by going to the 'Explore' page! </p>
     <% end %>
+    <div id = "pagination">
+      <%= will_paginate @postarray, inner_window: 2, outer_window: 0 %>
+    </div>
   </article>
 </center>

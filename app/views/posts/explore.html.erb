@@ -19,56 +19,53 @@
     <h2> All Posts </h2>
     <i>The posts displayed are from users you do not follow</i>
     <p></p>
-      <% @posts.each do |post| %>
-        <!-- only displays posts from users the current user does not follow -->
-        <% if post.user != current_user && !current_user.following?(post.user)  %>
-        <table id = "recents_table">
-          <tr id = "top_row">
-            <td width = "50">
-              <%= link_to post.user do %>
-                <% @link = post.user.avatar.url(:thumb) %>
-                <%if @link %>
-                  <img class = "avatar_image_small" src = "<%= @link %>">
-                <% else %>
-                  <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
-                <% end %>
+    <%- @postarray.each do |post| %>
+      <table id = "recents_table">
+        <tr>
+          <td width = "60">
+            <%= link_to post.user do %>
+              <% @link = post.user.avatar.url(:thumb) %>
+              <%if @link %>
+                <img class = "avatar_image_small" src = "<%= @link %>">
+              <% else %>
+                <img class = "avatar_image_small" src = "<%= asset_path 'default_avatar.jpg' %>">
               <% end %>
-            </td>
-            <td colspan = "2">
-              <%= link_to post.user.username, post_path(post), id: "post_title_link" %>:
-              <%= link_to post.title, post_path(post), id: "post_title_link" %><br>
-              <%= pluralize(post.likes.count, "Like") %>
-            </td>
-          </tr>
-          <% if post.post_file? %>
-            <tr>
-              <td colspan = "3" width = "900">
-                <center>
-                  <% @link = post.post_file.url(:thumb) %>
-                  <%= link_to post_path(post) do %>
-                    <img class = "post_image" src = "<%= @link %>"  %>
-                  <% end %>
-                </center>
-              </td>
-            </tr>
-          <% end %>
+            <% end %>
+          </td>
+          <td colspan = "2">
+            <%= link_to post.user.username, post_path(post), id: "post_title_link" %>:
+            <%= link_to post.title, post_path(post), id: "post_title_link" %><br>
+            <%= pluralize(post.likes.count, "Like") %>
+          </td>
+        </tr>
+        <% if post.post_file? %>
           <tr>
             <td colspan = "3" width = "900">
-              <p id = "recents_display_body">
-                <% if post.body.length >= 200 %>
-                  <%= link_to post.body[0..199], post_path(post), id: "post_link" %>... <i id = "post_link" > (Click the title to see more)</i>
-                <% else %>
-                  <%= link_to post.body[0..199], post_path(post), id: "post_link" %>
+              <center>
+                <% @link = post.post_file.url(:thumb) %>
+                <%= link_to post_path(post) do %>
+                  <img class = "post_image" src = "<%= @link %>"  %>
                 <% end %>
-              </p>
+              </center>
             </td>
           </tr>
-        </table>
-      <% end %>
+        <% end %>
+        <tr>
+          <td colspan = "3" width = "900">
+            <p id = "recents_display_body">
+              <% if post.body.length >= 200 %>
+                <%= link_to post.body[0..199], post_path(post), id: "post_link" %>... <i id = "post_link" > (Click the title to see more)</i>
+              <% else %>
+                <%= link_to post.body[0..199], post_path(post), id: "post_link" %>
+              <% end %>
+            </p>
+          </td>
+        </tr>
+      </table>
     <% end %>
     <!-- provides link that allows users to move between pages -->
     <div id = "pagination">
-      <%= will_paginate @posts %>
+      <%= will_paginate @postarray %>
     </div>
   </article>
 </center>
