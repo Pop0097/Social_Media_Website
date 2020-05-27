@@ -3,7 +3,7 @@
   <article id = "recents_article">
     <p id = "recents_title"> Recents </p>
 
-    <% if current_user.following.count != 0 %>
+    <% if current_user.following.count != 0 || current_user.posts.count != 0 %>
       <!-- provides link that allows users to move between pages -->
       <%- @postarray.each do |post| %>
         <table id = "recents_table">
