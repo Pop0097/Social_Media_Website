@@ -1,4 +1,4 @@
-# README
+# Social_Media_Website (Popper)
 
 Popper is a social media platform that I developed during Spring 2020. I created this program to understand the logic behind other social media platforms such as Instagram and Facebook. I used Ruby on Rails, HTML, and SCSS (a superset of CSS) to develop the software.
 
