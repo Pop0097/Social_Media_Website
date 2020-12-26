@@ -2,7 +2,7 @@
 
 Popper is a social media platform that I developed during Spring 2020. I created this program to understand the logic behind other social media platforms such as Instagram and Facebook. I used Ruby on Rails, HTML, and SCSS (a superset of CSS) to develop the software.
 
-Popper brings implements features such as:
+Popper brings features such as:
 - Unique user accounts protected by a username/email and a password
 - Ability to share images and blogs
 - Ability to like and comment on posts
