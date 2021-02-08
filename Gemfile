@@ -8,7 +8,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 #use devise for user authentication
 gem 'devise', '~> 4.7.1'
 #use carrierwave for file uploads
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '4.10.1'
 #Used to paginate
 gem 'will_paginate', '~> 3.1.8'
